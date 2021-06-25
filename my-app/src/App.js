@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <nav id='Nav' class="navbar navbar-default">
+        <h1>AdoptMe Web</h1>
+        <ul>
+          <li>Home</li>
+          <li>Mis Mascotas</li>
+          <li>Amigos</li>
+        </ul>
+      </nav>
+
+      <div> 
+        <img src='https://www.datocms-assets.com/21358/1586237290-adopt-me-chick.png?auto=format&dpr=0.48&w=420' className="App-logo" alt="logo" />
+      </div>
     </div>
   );
 }

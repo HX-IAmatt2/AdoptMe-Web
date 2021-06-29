@@ -1,0 +1,20 @@
+.box {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 500px;
+    margin: auto;
+    margin-top: 5rem;
+
+    background-color: rgb(228, 133, 188);
+    border-radius: 20px;
+    border-color: rgb(170, 8, 89);
+    border-style: solid;
+    border-width: 2px;
+}
+
+
+#closeDiv {
+    align-self: flex-end;
+    margin: 8px 8px;
+}

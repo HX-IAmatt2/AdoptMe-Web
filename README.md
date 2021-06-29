@@ -10,7 +10,6 @@ ideas:
 
 - recibir un huevo que contenga una mascota random
 - se rompe y adoptamos esa mascota
-- nombres aletorios para bautizar a tu mascota (sugeridos)
 - bautizar con nombre propio
 - stats con caracteristicas la mascota.
 - definir clases

@@ -6,7 +6,7 @@ function Nav() {
 
     return(
 
-        <nav id={styles.Nav} className="navbar navbar-default">    
+        <nav id={styles.Nav}>
             <img src={title} alt=''></img>
         </nav>
     )

@@ -19,7 +19,7 @@ function NewEgg ({window, newPet, egg}) {
                         className="shake-slow shake-constant shake-constant--hover" 
                         type="image" 
                         alt='' 
-                        src={egg}
+                        src={egg.img}
                         onClick={ () => newPet()}
                     />
                 </div>

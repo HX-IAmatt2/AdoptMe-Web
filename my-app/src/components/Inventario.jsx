@@ -18,8 +18,8 @@ export default function Inventario({window, inventario, close}) {
                         X
                     </button>
                 </div>
-                <div>
-                
+
+                <div id={styles.pets}>
                     {
                         inventario.map(pet => (
                             <img src={pet.img} alt=''></img>

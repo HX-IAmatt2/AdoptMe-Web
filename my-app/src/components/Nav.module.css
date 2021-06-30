@@ -1,4 +1,8 @@
 #Nav {
-    background-color: white;
-    border-width: 1px;
+    margin: 0;
+    background-image: none;
+}
+
+#title {
+    font-size: 72px; 
 }

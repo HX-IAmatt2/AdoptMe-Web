@@ -14,10 +14,12 @@ function App() {
   const [inventario, setInventario] = useState([]);
 
 
+  // Devuelve un nro random entre dos valores
   function getRandom(min, max) {
     return Math.random() * (max - min) + min;
   }
 
+  // Establece el tipo de huevo segun random
   function typeOfEgg() {
   let random = Math.floor(getRandom(1,100))
   if (random>0 && random<=40) setEgg('./img/eggs/Huevo_de_mascota.png')
@@ -26,15 +28,18 @@ function App() {
   if (random>90 && random<=100) setEgg('./img/eggs/Huevo_rosa.png')
   }
 
+  // Cierra la ventana actual
   function close() {
     setWindow('blank')
   }
 
+  // Añade mascota al inventario
   function add() {
     setInventario([...inventario, pet])
     close()
   }
 
+  // Obtiene una nueva mascota
   function newPet() {
     setWindow('newPet')
     setPet({

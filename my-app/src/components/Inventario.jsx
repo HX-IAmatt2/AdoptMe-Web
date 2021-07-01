@@ -22,10 +22,16 @@ export default function Inventario({ inventario}) {
         <h2>Inventario</h2>
       </div>
 
-      <div id={styles.pets}>
+      <div >
+
+        <ul id={styles.pets}>
         {inventario.map((pet,i) => (
-          <img key={i} src={pet.img} alt=""></img>
+          <li key={i}>
+          <img src={pet.img} alt=""></img>
+          <h4>{pet.name}</h4>
+          </li>
         ))}
+        </ul>
       </div>
     </div>
   );

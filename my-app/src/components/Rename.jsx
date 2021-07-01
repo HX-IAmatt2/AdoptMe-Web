@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styles from './Rename.module.css';
 
 export default function Rename({ pet, setPet }) {
+  
   const [newName, setnewName] = useState(pet.name);
   const [error, setError] = useState(false);
 

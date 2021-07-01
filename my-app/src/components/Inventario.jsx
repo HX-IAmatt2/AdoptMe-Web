@@ -23,8 +23,8 @@ export default function Inventario({ inventario}) {
       </div>
 
       <div id={styles.pets}>
-        {inventario.map((pet) => (
-          <img src={pet.img} alt=""></img>
+        {inventario.map((pet,i) => (
+          <img key={i} src={pet.img} alt=""></img>
         ))}
       </div>
     </div>

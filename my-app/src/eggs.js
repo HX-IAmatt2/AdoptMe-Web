@@ -1,3 +1,5 @@
+// sin usar
+
 
 const Eggs = {
     '1': './img/eggs/Huevo_de_mascota.png', 

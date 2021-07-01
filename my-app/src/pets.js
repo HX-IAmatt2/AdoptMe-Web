@@ -46,7 +46,7 @@ export const Vaca = {
     'Baile 1 (Adulto Joven)',
     'Baile 2 (Crecido Completamente)',
   ],
-}
+};
 
 export const PerroAzul = {
   raza: 'Perro azul',
@@ -63,7 +63,7 @@ export const PerroAzul = {
     'Backflip (Adulto Joven)',
     'Baile (Crecido Completamente)',
   ],
-}
+};
 
 export const GatoRosa = {
   raza: 'Gato rosa',
@@ -80,4 +80,4 @@ export const GatoRosa = {
     'Backflip (Adulto Joven)',
     'Baile (Crecido Completamente)',
   ],
-}
+};

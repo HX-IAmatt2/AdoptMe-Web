@@ -8,11 +8,12 @@ import NewEgg from './components/NewEgg';
 import NewPet from './components/NewPet';
 import Inventario from './components/Inventario';
 
-import Pets, { Gato, Perro, Vaca, PerroAzul, GatoRosa } from './pets.js';
+import { Gato, Perro, Vaca, PerroAzul, GatoRosa } from './pets.js';  // No tengo Api, traigo de aca las pets
 
 function App() {
-  const [pet, setPet] = useState({});
+  
   const [egg, setEgg] = useState({});
+  const [pet, setPet] = useState({});
   const [inventario, setInventario] = useState([]);
 
   // Devuelve un nro random entre dos valores
@@ -62,7 +63,9 @@ function App() {
 
   // Obtiene una nueva mascota segun el huevo
   function newPet() {
-    //setWindow('newPet');
+
+    // No hice un switch porque esto es provisorio. Luego hay que hacer otra instancia random donde para cada tipo de huevo
+    // puedan salir diferentes mascotas con distintas probabilidades segun el tipo de huevo.
 
     if (egg.type === 'common') setPet(Gato);
 
@@ -80,20 +83,17 @@ function App() {
     setInventario([...inventario, pet]);
   }
 
-  // Chambia el nombre de la mascota
-  function rename() {}
-
   return (
     <div className="App">
       <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
-
+    
       <Route
         path="/NuevoHuevo"
         render={() => <NewEgg newPet={newPet} egg={egg} />}
       />
       <Route
         path="/NuevaMascota"
-        render={() => <NewPet pet={pet} inventario={inventario} add={add} />}
+        render={() => <NewPet pet={pet} setPet={setPet} inventario={inventario} add={add}/>}
       />
 
       <Route

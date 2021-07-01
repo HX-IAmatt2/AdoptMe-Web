@@ -1,8 +1,5 @@
 #Nav {
-    margin: 0;
-    background-image: none;
+  margin: 0;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-#title {
-    font-size: 72px; 
-}

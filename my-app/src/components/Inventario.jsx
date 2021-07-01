@@ -1,37 +1,32 @@
 import React from 'react';
-import styles from './Inventario.module.css'
+import { Link } from 'react-router-dom';
 
-export default function Inventario({window, inventario, close}) {
+import styles from './Inventario.module.css';
 
-    if (window==='inventario') {
-        console.log('Contenido del Inventario:',inventario)
-        return (
+export default function Inventario({ inventario}) {
+  console.log('Contenido del Inventario:', inventario);
+  return (
+    <div className={styles.box}>
+      <div id={styles.closeDiv}>
+        <Link to="/">
+          <button
+            id={styles.btnClose}
+            className="btn btn-danger"
+          >
+            X
+          </button>
+        </Link>
+      </div>
 
-            <div className={styles.box}>
+      <div id={styles.header}>
+        <h2>Inventario</h2>
+      </div>
 
-                <div id={styles.closeDiv}>
-                    <button 
-                        id={styles.btnClose} 
-                        className='btn btn-danger'
-                        onClick={() => close()}
-                    >
-                        X
-                    </button>
-                </div>
-
-                <div id={styles.pets}>
-                    {
-                        inventario.map(pet => (
-                            <img src={pet.img} alt=''></img>
-                        )  
-                        
-                        )
-                    }
-                </div>
-            </div>
-
-        )
-
-    }
-    else return null
+      <div id={styles.pets}>
+        {inventario.map((pet) => (
+          <img src={pet.img} alt=""></img>
+        ))}
+      </div>
+    </div>
+  );
 }

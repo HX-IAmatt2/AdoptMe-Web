@@ -1,15 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import title from '../img/title.png';
-import styles from './Nav.module.css'
+import styles from './Nav.module.css';
 
-function Nav() {
+function Nav({typeOfEgg}) {
+  return (
+    <nav id={styles.Nav}>
+      <Link to="/">
+        <img src={title} alt=""></img>
+      </Link>
 
-    return(
+      <Link to="/NuevoHuevo">
+        <button
+          className="btn btn-primary"
+          onClick={() => typeOfEgg()}>
+          Adoptar
+        </button>
+      </Link>
 
-        <nav id={styles.Nav}>
-            <img src={title} alt=''></img>
-        </nav>
-    )
+      <Link to="/Inventario">
+        <button
+          className="btn btn-info"
+        >
+          Inventario
+        </button>
+      </Link>
+    </nav>
+  );
 }
 
-export default Nav
+export default Nav;

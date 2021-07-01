@@ -1,6 +1,7 @@
 export const Gato = {
   raza: 'Gato',
   name: 'Gato',
+  description: `un Gato`,
   img: './img/pets/Gato.png',
   age: 'Recién nacido',
   rareza: 'Común',
@@ -17,6 +18,7 @@ export const Gato = {
 export const Perro = {
   raza: 'Perro',
   name: 'Perro',
+  description: `un Perro`,
   img: './img/pets/Perro.png',
   age: 'Recién nacido',
   rareza: 'Común',
@@ -33,6 +35,7 @@ export const Perro = {
 export const Vaca = {
   raza: 'Vaca',
   name: 'Vaca',
+  description: `una Vaca`,
   img: './img/pets/Vaca.png',
   age: 'Recién nacido',
   rareza: 'Raro',
@@ -47,7 +50,8 @@ export const Vaca = {
 
 export const PerroAzul = {
   raza: 'Perro azul',
-  name: 'Perro azul',
+  name: 'Perro Azul',
+  description: `un Perro azul`,
   img: './img/pets/Perro_azul.png',
   age: 'Recién nacido',
   rareza: 'No común',
@@ -63,7 +67,8 @@ export const PerroAzul = {
 
 export const GatoRosa = {
   raza: 'Gato rosa',
-  name: 'Gato rosa',
+  name: 'Gato Rosa',
+  description: `un Gato rosa`,
   img: './img/pets/Gato_rosa.png',
   age: 'Recién nacido',
   rareza: 'No común',

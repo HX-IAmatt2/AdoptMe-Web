@@ -1,58 +1,20 @@
 * {
   margin: 0;
   padding: 0;
-  background-image: url('https://pbs.twimg.com/media/D8NKVtxXsAA485f.jpg:large');
 }
 
 html {
   scroll-behavior: smooth;
-  background-image: none;
 }
 
-#btns {
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem 65rem;
-}
-
-.App {
-  margin: 0;
-  text-align: center;
+body {
   font-family: 'Comic Neue', cursive;
+  background-image: url('https://pbs.twimg.com/media/D8NKVtxXsAA485f.jpg:large');
+  text-align: center;
+
 }
 
 ul {
   list-style: none;
 }
 
-div {
-  background-image: none;
-}
-
-input {
-  background-image: none;
-}
-
-img {
-  background-image: none;
-}
-
-h2 {
-  background-image: none;
-}
-
-h3 {
-  background-image: none;
-}
-
-h4 {
-  background-image: none;
-}
-
-ul {
-  background-image: none;
-}
-
-li {
-  background-image: none;
-}

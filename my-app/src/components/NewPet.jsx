@@ -1,53 +1,54 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Rename from './Rename.jsx'
+
 import styles from './NewPet.module.css';
-import NameIt from './NameIt.jsx';
 
-export default function NewPet({ window, pet, add }) {
-  if (window === 'newPet') {
-    return (
-      <div className={styles.box}>
-        <div id={styles.title}>
-          <h2>Tienes un {pet.raza}!</h2>
-          <h4>Nombre: {pet.name}</h4>
-        </div>
+export default function NewPet({pet, add}) {
 
-        <div id={styles.img}>
-          <img src={pet.img} alt=""></img>
-        </div>
+  return (
+    <div className={styles.box}>
+      <div id={styles.header}>
+        <h2>Obtuviste {pet.description}!</h2>
+      </div>
+      <div id={styles.img}>
+        <img src={pet.img} alt=""></img>
+      </div>
 
-        <div id={styles.info}>
-          <ul>
-            <li>Rareza: {pet.rareza}</li>
-            <li>Edad: {pet.age}</li>
-            <li>
-              Trucos:
-              <ul id={styles.trickList}>
-                {pet.trucos.map((truco) => (
-                  <li> {truco} </li>
-                ))}
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <Route path="/NuevaMascota/Renombrar" render={() => <Rename pet={pet} />} />
 
-        <div id={styles.btnsDiv}>
-          <button
-            id={styles.btnAdd}
-            className="btn btn-primary"
-            onClick={() => add()}
-          >
+
+      <div id={styles.info}>
+        <ul>
+          <li>Nombre: {pet.name}</li>
+          <li>Rareza: {pet.rareza}</li>
+          <li>Edad: {pet.age}</li>
+          <li>
+            Trucos:
+            <ul id={styles.trickList}>
+              {pet.trucos.map((truco) => (
+                <li> {truco} </li>
+              ))}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div id={styles.btnsDiv}>
+        <Link to="/NuevaMascota/Renombrar">
+          <button 
+          className="btn btn-primary" 
+          onClick={() => add()}>
             Cambiar nombre
           </button>
-
-          <button
-            id={styles.btnAdd}
-            className="btn btn-success"
-            onClick={() => add()}
-          >
+        </Link>
+        <Link to="/Inventario">
+          <button className="btn btn-success" onClick={() => add()}>
             Guardar en inventario
           </button>
-        </div>
+        </Link>
       </div>
-    );
-  } else return null;
+    </div>
+  );
 }

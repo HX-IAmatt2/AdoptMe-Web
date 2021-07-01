@@ -1,8 +1,0 @@
-#box {
-    display: block;
-    position: absolute;
-    z-index: 0;
-  margin: auto;
-  width: 200px;
-  height: 200px;
-}

@@ -16,16 +16,23 @@
     border-width: 2px;
 
     box-shadow: 10px 10px 50px;
+
 }
 
+#header {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    position: absolute;
+    align-self: center;
+  }
 
 #closeDiv {
+    position: float;
     align-self: flex-end;
     margin: 8px 8px;
 }
 
 #pets {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display:flex;
     justify-content: space-around;
 

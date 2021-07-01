@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { Route } from 'react-router-dom';
+
 import './App.css';
+
 import Nav from './components/Nav.jsx';
 import NewEgg from './components/NewEgg';
 import NewPet from './components/NewPet';
 import Inventario from './components/Inventario';
+
 import Pets, { Gato, Perro, Vaca, PerroAzul, GatoRosa } from './pets.js';
 
 function App() {
-  const [window, setWindow] = useState({});
   const [pet, setPet] = useState({});
   const [egg, setEgg] = useState({});
   const [inventario, setInventario] = useState([]);
@@ -59,7 +62,7 @@ function App() {
 
   // Obtiene una nueva mascota segun el huevo
   function newPet() {
-    setWindow('newPet');
+    //setWindow('newPet');
 
     if (egg.type === 'common') setPet(Gato);
 
@@ -75,42 +78,28 @@ function App() {
   // Añade la mascota obtenida al inventario
   function add() {
     setInventario([...inventario, pet]);
-    close();
   }
 
-  // Cierra la ventana actual
-  function close() {
-    setWindow('blank');
-  }
+  // Chambia el nombre de la mascota
+  function rename() {}
 
   return (
     <div className="App">
-      <Nav />
+      <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
 
-      <div id='btns'>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={(e) => {
-            e.preventDefault();
-            typeOfEgg();
-            setWindow('egg');
-          }}
-        >
-          Adoptar
-        </button>
+      <Route
+        path="/NuevoHuevo"
+        render={() => <NewEgg newPet={newPet} egg={egg} />}
+      />
+      <Route
+        path="/NuevaMascota"
+        render={() => <NewPet pet={pet} inventario={inventario} add={add} />}
+      />
 
-        <button
-          className="btn btn-info"
-          onClick={() => setWindow('inventario')}
-        >
-          Inventario
-        </button>
-      </div>
-
-      <NewEgg window={window} newPet={newPet} egg={egg} />
-      <NewPet window={window} pet={pet} add={add} inventario={inventario} />
-      <Inventario window={window} close={close} inventario={inventario} />
+      <Route
+        path="/Inventario"
+        render={() => <Inventario inventario={inventario} />}
+      />
     </div>
   );
 }

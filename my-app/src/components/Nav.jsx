@@ -9,7 +9,7 @@ function Nav({ window, setWindow, typeOfEgg}) {
     <nav id={styles.Nav}>
       
       <Link to="/">
-        <img src={title} alt=""></img>
+      <a><img src={title} alt='' onClick={() => setWindow({})}/></a>
       </Link>
 
         <button

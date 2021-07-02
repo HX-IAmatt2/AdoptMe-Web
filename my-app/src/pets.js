@@ -32,21 +32,6 @@ export const Perro = {
   ],
 };
 
-export const Vaca = {
-  raza: 'vaca',
-  name: 'Vaca',
-  description: `una vaca`,
-  img: './img/pets/Vaca.png',
-  age: 'Recién nacido',
-  rareza: 'Raro',
-  trucos: [
-    'Sentarse (Recien Nacido)',
-    'Acostarse (Junior y Preadolecente)',
-    'Voltereta (Adolecente)',
-    'Baile 1 (Adulto Joven)',
-    'Baile 2 (Crecido Completamente)',
-  ],
-};
 
 export const PerroAzul = {
   raza: 'perro azul',
@@ -81,3 +66,4 @@ export const GatoRosa = {
     'Baile (Crecido Completamente)',
   ],
 };
+

@@ -4,7 +4,7 @@ import Rename from './Rename.jsx';
 
 import styles from './NewPet.module.css';
 
-export default function NewPet({ pet, setPet, add }) {
+export default function NewPet({ pet, setPet, add, window, setWindow}) {
   return (
     <div className={styles.box}>
       <div id={styles.header}>
@@ -14,10 +14,8 @@ export default function NewPet({ pet, setPet, add }) {
         <img src={pet.img} alt=""></img>
       </div>
 
-      <Route
-        path="/NuevaMascota/Renombrar"
-        render={() => <Rename pet={pet} setPet={setPet} />}
-      />
+    <Rename pet={pet} setPet={setPet} window={window} setWindow={setWindow} />
+      
 
       <div id={styles.info}>
         <ul>
@@ -36,14 +34,12 @@ export default function NewPet({ pet, setPet, add }) {
       </div>
 
       <div id={styles.btnsDiv}>
-        <Link to="/NuevaMascota/Renombrar">
           <button
             className="btn btn-primary"
-            //onClick={() => setnewName('')}
+            onClick={() => setWindow('rename')}
           >
             Cambiar nombre
           </button>
-        </Link>
         <Link to="/Inventario">
           <button className="btn btn-success" onClick={() => add()}>
             Guardar en inventario

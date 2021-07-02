@@ -8,13 +8,24 @@ import NewEgg from './components/NewEgg';
 import NewPet from './components/NewPet';
 import Inventario from './components/Inventario';
 
-import { Gato, Perro, Vaca, PerroAzul, GatoRosa } from './pets.js';  // No tengo Api, traigo de aca las pets
+import { Gato, Perro, PerroAzul, GatoRosa } from './pets.js';
+import {
+  Vaca,
+  Pollo,
+  PatoTonto,
+  Pato,
+  Cerdo,
+  Pavo,
+  Llama,
+  Buho,
+  Cuervo,
+} from './pets/farm.js'; // No hay Api de esto, traigo de aca las pets
 
 function App() {
-  
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
   const [inventario, setInventario] = useState([]);
+  const [window, setWindow] = useState('');
 
   // Devuelve un nro random entre dos valores
   function getRandom(min, max) {
@@ -63,15 +74,24 @@ function App() {
 
   // Obtiene una nueva mascota segun el huevo
   function newPet() {
-
-    // No hice un switch porque esto es provisorio. Luego hay que hacer otra instancia random donde para cada tipo de huevo
-    // puedan salir diferentes mascotas con distintas probabilidades segun el tipo de huevo.
+    // Falta terminar de desarrollar. Farm esta listo, ya tiene todos sus pets.
 
     if (egg.type === 'common') setPet(Gato);
 
     if (egg.type === 'broken') setPet(Perro);
 
-    if (egg.type === 'farm') setPet(Vaca);
+    if (egg.type === 'farm') {
+      let random = getRandom(1, 101);
+      if (random > 0 && random <= 20) setPet(Pollo); // Comunes 20%
+      if (random > 20 && random <= 37.5) setPet(PatoTonto);
+      if (random > 37.5 && random <= 55) setPet(Pato); // No comunes 35 %
+      if (random > 55 && random <= 68.5) setPet(Cerdo);
+      if (random > 68.5 && random <= 82) setPet(Vaca); // Raros 27%
+      if (random > 82 && random <= 89.5) setPet(Pavo);
+      if (random > 89.5 && random <= 97) setPet(Llama); // Ultra Raros 15%
+      if (random > 97 && random <= 98.5) setPet(Buho);
+      if (random > 98.5 && random <= 100) setPet(Cuervo); // Legendarios 3 %
+    }
 
     if (egg.type === 'blue') setPet(PerroAzul);
 
@@ -86,14 +106,23 @@ function App() {
   return (
     <div className="App">
       <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
-    
+
       <Route
         path="/NuevoHuevo"
         render={() => <NewEgg newPet={newPet} egg={egg} />}
       />
       <Route
         path="/NuevaMascota"
-        render={() => <NewPet pet={pet} setPet={setPet} inventario={inventario} add={add}/>}
+        render={() => (
+          <NewPet
+            pet={pet}
+            setPet={setPet}
+            inventario={inventario}
+            add={add}
+            window={window}
+            setWindow={setWindow}
+          />
+        )}
       />
 
       <Route

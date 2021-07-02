@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
+import {badWordsSpa} from '../badWords.js'
+
 import styles from './Rename.module.css';
 
-export default function Rename({ pet, setPet }) {
+export default function Rename({ pet, setPet, window, setWindow }) {
   
   const [newName, setnewName] = useState(pet.name);
   const [error, setError] = useState(false);
@@ -11,7 +13,8 @@ export default function Rename({ pet, setPet }) {
   // Monitorea el state del input
   function handleChange(value) {
     setError(false);
-    if (value.toLowerCase() === 'idiota') setError(`Insultos no permitidos!`);
+
+    if (badWordsSpa.includes(value.toLowerCase())) setError(`Insultos no permitidos!`);
     
     if (value.length < 3) setError('Debe tener al menos 3 caracteres');
 
@@ -23,7 +26,10 @@ export default function Rename({ pet, setPet }) {
   function handleSubmit(e) {
     e.preventDefault();
     setPet((prev) => ({ ...prev, name: newName }));
+    setWindow('')
   }
+
+  if (window === 'rename') {
 
   return (
     <div id={styles.box}>
@@ -45,6 +51,7 @@ export default function Rename({ pet, setPet }) {
           value={newName}
           onChange={(event) => handleChange(event.target.value)}
         />
+
         <button
           id={styles.btn}
           className={
@@ -53,7 +60,7 @@ export default function Rename({ pet, setPet }) {
               : 'btn btn-success my-2 my-sm-0'
           }
           type="submit"
-          //onClick={() => <Redirect to='/' />}
+          //onClick={() => setWindow('')}
         >
           OK
         </button>
@@ -62,4 +69,8 @@ export default function Rename({ pet, setPet }) {
       </form>
     </div>
   );
+
+  }
+
+  else return null;
 }

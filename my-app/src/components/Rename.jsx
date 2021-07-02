@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
 
 import {badWordsSpa} from '../badWords.js'
 

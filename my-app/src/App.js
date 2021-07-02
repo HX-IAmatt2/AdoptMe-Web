@@ -19,13 +19,16 @@ import {
   Llama,
   Buho,
   Cuervo,
-} from './pets/farm.js'; // No hay Api de esto, traigo de aca las pets
+} from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
 function App() {
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
   const [inventario, setInventario] = useState([]);
-  const [window, setWindow] = useState('');
+  const [window, setWindow] = useState({
+    main: '',
+    popup: '',
+  });
 
   // Devuelve un nro random entre dos valores
   function getRandom(min, max) {
@@ -70,6 +73,7 @@ function App() {
         img: './img/eggs/Huevo_rosa.png',
       });
     }
+    setWindow({ ...window, main: 'NewEgg' });
   }
 
   // Obtiene una nueva mascota segun el huevo
@@ -96,33 +100,23 @@ function App() {
     if (egg.type === 'blue') setPet(PerroAzul);
 
     if (egg.type === 'pink') setPet(GatoRosa);
-  }
 
-  // Añade la mascota obtenida al inventario
-  function add() {
-    setInventario([...inventario, pet]);
+    setWindow({ ...window, main: 'NewPet' });
   }
 
   return (
     <div className="App">
       <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
 
-      <Route
-        path="/NuevoHuevo"
-        render={() => <NewEgg newPet={newPet} egg={egg} />}
-      />
-      <Route
-        path="/NuevaMascota"
-        render={() => (
-          <NewPet
-            pet={pet}
-            setPet={setPet}
-            inventario={inventario}
-            add={add}
-            window={window}
-            setWindow={setWindow}
-          />
-        )}
+      <NewEgg window={window} newPet={newPet} egg={egg} />
+
+      <NewPet
+        pet={pet}
+        setPet={setPet}
+        inventario={inventario}
+        setInventario={setInventario}
+        window={window}
+        setWindow={setWindow}
       />
 
       <Route

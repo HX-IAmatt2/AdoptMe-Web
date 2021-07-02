@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import {badWordsSpa} from '../badWords.js'
-
 import styles from './Rename.module.css';
 
 export default function Rename({ pet, setPet, window, setWindow }) {
@@ -14,9 +12,7 @@ export default function Rename({ pet, setPet, window, setWindow }) {
     setError(false);
 
     if (badWordsSpa.includes(value.toLowerCase())) setError(`Insultos no permitidos!`);
-    
     if (value.length < 3) setError('Debe tener al menos 3 caracteres');
-
     if (value === '') setError('Ingresa un nuevo nombre');
     setnewName(value);
   }
@@ -24,11 +20,11 @@ export default function Rename({ pet, setPet, window, setWindow }) {
   // Maneja el submit
   function handleSubmit(e) {
     e.preventDefault();
-    setPet((prev) => ({ ...prev, name: newName }));
-    setWindow('')
+    setPet((prev) => ({ ...prev, name: newName }));  // cambial la prop name de pet
+    setWindow({...window, popup:''})
   }
 
-  if (window === 'rename') {
+  if (window.popup === 'Rename') {
 
   return (
     <div id={styles.box}>
@@ -59,7 +55,6 @@ export default function Rename({ pet, setPet, window, setWindow }) {
               : 'btn btn-success my-2 my-sm-0'
           }
           type="submit"
-          //onClick={() => setWindow('')}
         >
           OK
         </button>

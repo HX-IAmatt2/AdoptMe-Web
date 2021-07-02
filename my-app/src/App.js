@@ -106,7 +106,8 @@ function App() {
 
   return (
     <div className="App">
-      <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
+
+      <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} window={window} setWindow={setWindow} />} />
 
       <NewEgg window={window} newPet={newPet} egg={egg} />
 
@@ -118,11 +119,15 @@ function App() {
         window={window}
         setWindow={setWindow}
       />
+      
 
       <Route
         path="/Inventario"
         render={() => <Inventario inventario={inventario} />}
-      />
+        />
+
+
+      
     </div>
   );
 }

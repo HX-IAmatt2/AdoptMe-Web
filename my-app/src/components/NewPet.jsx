@@ -20,6 +20,7 @@ export default function NewPet({ pet, setPet, window, setWindow, inventario, set
         </div>
         <div id={styles.img}>
           <img src={pet.img} alt=""></img>
+        
         </div>
 
         <Rename

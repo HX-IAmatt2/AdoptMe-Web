@@ -40,3 +40,15 @@
   justify-content: space-between;
   margin: 2rem 8rem;
 }
+
+
+.pet {
+  align-self: flex-end;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  background-color: #F44336;
+  height: 200px;
+  margin: 0 auto 0 auto;
+  transform-origin: bottom;
+  width: 200px;
+}

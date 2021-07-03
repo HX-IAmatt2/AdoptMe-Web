@@ -37,3 +37,7 @@
     justify-content: space-around;
 
 }
+
+#removeBtn {
+    border-radius: 50px;
+}

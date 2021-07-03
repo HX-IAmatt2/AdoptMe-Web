@@ -30,6 +30,7 @@ function App() {
     popup: '',
   });
 
+
   // Devuelve un nro random entre dos valores
   function getRandom(min, max) {
     return Math.random() * (max - min) + min;
@@ -73,6 +74,7 @@ function App() {
         img: './img/eggs/Huevo_rosa.png',
       });
     }
+
     setWindow({ ...window, main: 'NewEgg' });
   }
 
@@ -101,6 +103,7 @@ function App() {
 
     if (egg.type === 'pink') setPet(GatoRosa);
 
+    setPet((prev) => ({...prev, id: inventario.length}))
     setWindow({ ...window, main: 'NewPet' });
   }
 
@@ -123,7 +126,7 @@ function App() {
 
       <Route
         path="/Inventario"
-        render={() => <Inventario inventario={inventario} />}
+        render={() => <Inventario inventario={inventario} setInventario={setInventario}/>}
         />
 
 

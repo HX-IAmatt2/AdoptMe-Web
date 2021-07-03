@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 
 import styles from './Inventario.module.css';
 
-export default function Inventario({ inventario}) {
+export default function Inventario({ inventario, setInventario}) {
+
+  function remove(id) {
+    console.log('remove OK')
+    setInventario(
+      inventario.filter ( pet => pet.id !== id) 
+    )
+  } 
+
   console.log('Contenido del Inventario:', inventario);
   return (
     <div className={styles.box}>
@@ -31,6 +39,10 @@ export default function Inventario({ inventario}) {
               <li key={i}>
               <img src={pet.img} alt=""></img>
               <h4>{pet.name}</h4>
+              <button
+              id = {styles.removeBtn}
+              className="btn btn-danger"
+              onClick={() => remove(pet.id)}>X</button>
               </li>
             ))}
 

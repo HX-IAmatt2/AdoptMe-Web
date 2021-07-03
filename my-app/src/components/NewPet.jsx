@@ -6,6 +6,9 @@ import styles from './NewPet.module.css';
 
 export default function NewPet({ pet, setPet, window, setWindow, inventario, setInventario }) {
 
+  
+
+  
   // Añade la mascota obtenida al inventario
   function add() {
     setInventario([...inventario, pet]);
@@ -13,6 +16,7 @@ export default function NewPet({ pet, setPet, window, setWindow, inventario, set
   }
 
   if (window.main === 'NewPet') {
+
     return (
       <div className={styles.box}>
         <div id={styles.header}>
@@ -47,10 +51,12 @@ export default function NewPet({ pet, setPet, window, setWindow, inventario, set
         </div>
 
         <div id={styles.btnsDiv}>
+
           <button
             className="btn btn-primary"
             onClick={() => setWindow({ ...window, popup: 'Rename' })}
           >
+            
             Cambiar nombre
           </button>
           <Link to="/Inventario">

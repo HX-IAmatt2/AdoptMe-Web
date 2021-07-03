@@ -20,7 +20,7 @@ export default function Rename({ pet, setPet, window, setWindow }) {
   // Maneja el submit
   function handleSubmit(e) {
     e.preventDefault();
-    setPet((prev) => ({ ...prev, name: newName }));  // cambial la prop name de pet
+    setPet((prev) => ({ ...prev, name: newName }));  // cambia la prop name de pet
     setWindow({...window, popup:''})
   }
 
@@ -50,9 +50,7 @@ export default function Rename({ pet, setPet, window, setWindow }) {
         <button
           id={styles.btn}
           className={
-            error
-              ? 'disabled btn btn-success my-2 my-sm-0'
-              : 'btn btn-success my-2 my-sm-0'
+            error ? 'disabled btn btn-success my-2 my-sm-0' : 'btn btn-success my-2 my-sm-0'
           }
           type="submit"
         >
@@ -60,6 +58,7 @@ export default function Rename({ pet, setPet, window, setWindow }) {
         </button>
 
         {error ? <h5>{error}</h5> : null}
+
       </form>
     </div>
   );

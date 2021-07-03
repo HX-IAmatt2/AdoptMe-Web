@@ -9,7 +9,7 @@ html {
 
 body {
   font-family: 'Comic Neue', cursive;
-  background-image: url('https://pbs.twimg.com/media/D8NKVtxXsAA485f.jpg:large');
+  background-image: url('./img/bg.jpg') ;
   text-align: center;
 
 }

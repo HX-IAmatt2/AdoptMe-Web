@@ -37,7 +37,7 @@ function App() {
 
   // Establece el tipo de huevo segun random
   function typeOfEgg() {
-    let random = Math.floor(getRandom(1, 100));
+    let random = getRandom(1, 100);
 
     if (random > 0 && random <= 40) {
       setEgg({

@@ -15,7 +15,7 @@ export default function NewEgg({ window, newPet, egg }) {
             <input
               className="shake-slow shake-constant shake-constant--hover"
               type="image"
-              alt=""
+              alt=""v
               src={egg.img}
               onClick={() => newPet()}
             />

@@ -25,7 +25,9 @@ function App() {
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
   const [inventario, setInventario] = useState([]);
+  const [idCount, setidCount] = useState(0)
   const [window, setWindow] = useState({
+
     main: '',
     popup: '',
   });
@@ -103,7 +105,8 @@ function App() {
 
     if (egg.type === 'pink') setPet(GatoRosa);
 
-    setPet((prev) => ({...prev, id: inventario.length}))
+    setPet((prev) => ({...prev, id: idCount}))
+    setidCount((prev) => (prev + 1))
     setWindow({ ...window, main: 'NewPet' });
   }
 

@@ -6,7 +6,6 @@ import styles from './Inventario.module.css';
 export default function Inventario({ inventario, setInventario}) {
 
   function remove(id) {
-    console.log('remove OK')
     setInventario(
       inventario.filter ( pet => pet.id !== id) 
     )
@@ -41,8 +40,8 @@ export default function Inventario({ inventario, setInventario}) {
               <h4>{pet.name}</h4>
               <button
               id = {styles.removeBtn}
-              className="btn btn-danger"
-              onClick={() => remove(pet.id)}>X</button>
+              //className="btn btn-danger"
+              onClick={() => remove(pet.id)}><img id={styles.removeImg} src='./img/delete-signv2.png' alt=""></img></button>
               </li>
             ))}
 

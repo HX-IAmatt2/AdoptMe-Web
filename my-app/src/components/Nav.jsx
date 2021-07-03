@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import title from '../img/title.png';
 import styles from './Nav.module.css';
 
 function Nav({ window, setWindow, typeOfEgg}) {
@@ -9,7 +8,7 @@ function Nav({ window, setWindow, typeOfEgg}) {
     <nav id={styles.Nav}>
       
       <Link to="/">
-      <a><img src={title} alt='' onClick={() => setWindow({})}/></a>
+      <a><img src='./img/title.png' alt='' onClick={() => setWindow({})}/></a>
       </Link>
 
       <div id={styles.buttons}>

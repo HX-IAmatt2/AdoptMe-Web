@@ -37,6 +37,7 @@ export default function Inventario({ inventario}) {
           </ul>
         : 
           <div>
+            <br></br>  <br></br>
             <h4> Aún no tienes mascotas </h4>
           </div>
         }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 
-import './App.css';
+import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
 
 import Nav from './components/Nav.jsx';
 import NewEgg from './components/NewEgg';
@@ -21,7 +22,10 @@ import {
   Cuervo,
 } from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
-function App() {
+function App({windowLayer0}) {
+
+  console.log(windowLayer0)
+
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
   const [inventario, setInventario] = useState([]);
@@ -132,10 +136,23 @@ function App() {
         render={() => <Inventario inventario={inventario} setInventario={setInventario}/>}
         />
 
-
-      
     </div>
   );
+
+
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+      windowLayer0 : state.windowLayer0,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps,)(App);
+

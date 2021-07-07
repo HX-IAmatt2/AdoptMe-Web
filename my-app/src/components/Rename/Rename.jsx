@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { badWordsSpa } from '../badWords.js';
+import { badWordsSpa } from '../../badWords.js';
 
-import { setLayer } from '../actions/actions.js';
+import { setLayer } from '../../actions/actions.js';
 import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './Rename.module.css';
 
-export default function Rename({ pet, setPet }) {
-
+const Rename = ({ pet, setPet }) => {
   const layer1 = useSelector((state) => state.layer1);
   const dispatch = useDispatch();
 
@@ -15,21 +14,21 @@ export default function Rename({ pet, setPet }) {
   const [error, setError] = useState(false);
 
   // Monitorea el state del input
-  function handleChange(value) {
+  const handleChange = (value) => {
     setError(false);
-
-    if (badWordsSpa.includes(value.toLowerCase())) setError(`Insultos no permitidos!`);
+    if (badWordsSpa.includes(value.toLowerCase()))
+      setError(`Insultos no permitidos!`);
     if (value.length < 3) setError('Debe tener al menos 3 caracteres');
     if (value === '') setError('Ingresa un nuevo nombre');
     setnewName(value);
-  }
+  };
 
   // Maneja el submit
-  function handleSubmit(e) {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setPet((prev) => ({ ...prev, name: newName })); // cambia la prop name de pet
     dispatch(setLayer(1, ''));
-  }
+  };
 
   if (layer1 === 'Rename') {
     return (
@@ -70,4 +69,6 @@ export default function Rename({ pet, setPet }) {
       </div>
     );
   } else return null;
-}
+};
+
+export default Rename;

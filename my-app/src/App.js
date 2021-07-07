@@ -1,15 +1,16 @@
-import React, { useState} from 'react';
-import {useDispatch} from 'react-redux'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route } from 'react-router-dom';
 
-import {setLayer} from './actions/actions.js'
+import { setLayer } from './actions/actions.js';
 
-import Nav from './components/Nav.jsx';
-import NewEgg from './components/NewEgg';
-import NewPet from './components/NewPet';
-import Inventario from './components/Inventario';
+import Nav from './components/Nav/Nav.jsx';
+import NewEgg from './components/NewEgg/NewEgg';
+import NewPet from './components/NewPet/NewPet';
+import Inventario from './components/Inventario/Inventario';
 
 import { Gato, Perro, PerroAzul, GatoRosa } from './pets.js';
+import { Elefante} from './pets/safari.js'
 import {
   Vaca,
   Pollo,
@@ -22,65 +23,64 @@ import {
   Cuervo,
 } from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
-export default function App() {
+const App = () => {
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
-  const [idCount, setidCount] = useState(0)
-  const [window, setWindow] = useState({
-    main: '',
-    popup: '',
-  });
 
-
-  // Devuelve un nro random entre dos valores
-  function getRandom(min, max) {
-    return Math.random() * (max - min) + min;
-  }
+  // Devuelve un nro random entre 0 y 100 inclusive
+  const getRandom = () => Math.floor(Math.random() * (101 - 0));
 
   // Establece el tipo de huevo segun random
   function typeOfEgg() {
-    let random = getRandom(1, 100);
 
-    if (random > 0 && random <= 40) {
+    let random = Math.floor(getRandom(1, 101));
+
+    if (random > 0 && random <= 30) {
       setEgg({
         type: 'common',
         img: './img/eggs/Huevo_de_mascota.png',
       });
     }
 
-    if (random > 40 && random <= 60) {
+    if (random > 30 && random <= 50) {
       setEgg({
         type: 'broken',
         img: './img/eggs/Huevo_roto.png',
       });
     }
 
-    if (random > 60 && random <= 80) {
+    if (random > 50 && random <= 70) {
       setEgg({
         type: 'farm',
         img: './img/eggs/Huevo_de_Granja.png',
       });
     }
 
-    if (random > 80 && random <= 90) {
+    if (random > 70 && random <= 80) {
       setEgg({
         type: 'blue',
         img: './img/eggs/Huevo_azul.png',
       });
     }
 
-    if (random > 90 && random <= 100) {
+    if (random > 80 && random <= 90) {
       setEgg({
         type: 'pink',
         img: './img/eggs/Huevo_rosa.png',
       });
     }
 
-    dispatch(setLayer(0,'New Egg'))
-    //setWindow({ ...window, main: 'NewEgg' });
+    if (random > 90 && random <= 100) {
+      setEgg({
+        type: 'safari',
+        img: './img/eggs/Huevo_de_Safari.png',
+      });
+    }
+
+    console.log(random)
+    dispatch(setLayer(0, 'New Egg'));
   }
 
   // Obtiene una nueva mascota segun el huevo
@@ -108,49 +108,22 @@ export default function App() {
 
     if (egg.type === 'pink') setPet(GatoRosa);
 
-    setPet((prev) => ({...prev, id: idCount}))
-    setidCount((prev) => (prev + 1))
-    //setWindow({ ...window, main: 'NewPet' });
-    dispatch(setLayer(0,'New Pet'))
+    if (egg.type === 'safari') setPet(Elefante);
+
+    dispatch(setLayer(0, 'New Pet'));
   }
 
   return (
     <div className="App">
+      <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
 
-      <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} window={window} setWindow={setWindow} />} />
+      <NewEgg newPet={newPet} egg={egg} />
 
-      <NewEgg window={window} newPet={newPet} egg={egg} />
+      <NewPet pet={pet} setPet={setPet} />
 
-      <NewPet
-        pet={pet}
-        setPet={setPet}
-        window={window}
-        setWindow={setWindow}
-      />
-      
-
-      <Route
-        path="/Inventario"
-        render={() => <Inventario/>}
-        />
-
+      <Route path="/Inventario" render={() => <Inventario />} />
     </div>
   );
-
-
 }
 
-/* const mapStateToProps = (state) => {
-  return {
-      windowLayer0 : state.windowLayer0,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    
-  }
-} */
-
-//export default connect(mapStateToProps,)(App);
-
+export default App

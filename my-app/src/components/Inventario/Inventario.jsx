@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import {useSelector,  useDispatch} from 'react-redux'
-import {removePet} from '../actions/actions.js'
+import {removePet} from '../../actions/actions.js'
 
 import styles from './Inventario.module.css';
 

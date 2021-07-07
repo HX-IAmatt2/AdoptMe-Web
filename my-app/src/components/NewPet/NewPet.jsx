@@ -2,21 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { addPet, setLayer } from '../actions/actions.js';
+import { addPet, setLayer } from '../../actions/actions.js';
 
-import Rename from './Rename.jsx';
+import Rename from '../Rename/Rename.jsx';
 import styles from './NewPet.module.css';
 
-export default function NewPet({ pet, setPet}) {
 
+const NewPet = ({ pet, setPet }) => {
   const layer0 = useSelector((state) => state.layer0);
   const dispatch = useDispatch();
 
+
   // Añade la mascota obtenida al inventario
-  function add() {
+  const add = () => {
     dispatch(addPet(pet));
     dispatch(setLayer(0, ''));
-  }
+  };
 
   if (layer0 === 'New Pet') {
     return (
@@ -28,10 +29,7 @@ export default function NewPet({ pet, setPet}) {
           <img src={pet.img} alt=""></img>
         </div>
 
-        <Rename
-          pet={pet}
-          setPet={setPet}
-        />
+        <Rename pet={pet} setPet={setPet} />
 
         <div id={styles.info}>
           <ul>
@@ -65,4 +63,6 @@ export default function NewPet({ pet, setPet}) {
       </div>
     );
   } else return null;
-}
+};
+
+export default NewPet;

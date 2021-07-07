@@ -1,25 +1,28 @@
+let petID = 1;
 
 export const setLayer = (layer, content) => {
-    return {
-        type: 'SET_LAYER', 
-        payload: {
-            layer: layer,
-            content: content
-        }
-    }
+  return {
+    type: 'SET_LAYER',
+    payload: {
+      layer: layer,
+      content: content,
+    },
+  };
 };
 
 export const addPet = (pet) => {
-    return {
-        type: 'ADOPT_PET',
-        payload: pet
-    }
-}
+  return {
+    type: 'ADOPT_PET',
+    payload: {
+      ...pet,
+      id: petID++,
+    },
+  };
+};
 
 export const removePet = (id) => {
-    return {
-        type: 'REMOVE_PET',
-        payload: id
-    }   
-}
-
+  return {
+    type: 'REMOVE_PET',
+    payload: id,
+  };
+};

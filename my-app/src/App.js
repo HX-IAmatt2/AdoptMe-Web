@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import {useDispatch} from 'react-redux'
 import { Route } from 'react-router-dom';
 
-import { bindActionCreators } from 'redux';
-import {connect} from 'react-redux';
+import {setLayer} from './actions/actions.js'
 
 import Nav from './components/Nav.jsx';
 import NewEgg from './components/NewEgg';
@@ -22,16 +22,14 @@ import {
   Cuervo,
 } from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
-function App({windowLayer0}) {
+export default function App() {
 
-  console.log(windowLayer0)
+  const dispatch = useDispatch()
 
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
-  const [inventario, setInventario] = useState([]);
   const [idCount, setidCount] = useState(0)
   const [window, setWindow] = useState({
-
     main: '',
     popup: '',
   });
@@ -81,7 +79,8 @@ function App({windowLayer0}) {
       });
     }
 
-    setWindow({ ...window, main: 'NewEgg' });
+    dispatch(setLayer(0,'New Egg'))
+    //setWindow({ ...window, main: 'NewEgg' });
   }
 
   // Obtiene una nueva mascota segun el huevo
@@ -111,7 +110,8 @@ function App({windowLayer0}) {
 
     setPet((prev) => ({...prev, id: idCount}))
     setidCount((prev) => (prev + 1))
-    setWindow({ ...window, main: 'NewPet' });
+    //setWindow({ ...window, main: 'NewPet' });
+    dispatch(setLayer(0,'New Pet'))
   }
 
   return (
@@ -124,8 +124,6 @@ function App({windowLayer0}) {
       <NewPet
         pet={pet}
         setPet={setPet}
-        inventario={inventario}
-        setInventario={setInventario}
         window={window}
         setWindow={setWindow}
       />
@@ -133,7 +131,7 @@ function App({windowLayer0}) {
 
       <Route
         path="/Inventario"
-        render={() => <Inventario inventario={inventario} setInventario={setInventario}/>}
+        render={() => <Inventario/>}
         />
 
     </div>
@@ -142,7 +140,7 @@ function App({windowLayer0}) {
 
 }
 
-const mapStateToProps = (state) => {
+/* const mapStateToProps = (state) => {
   return {
       windowLayer0 : state.windowLayer0,
   };
@@ -152,7 +150,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     
   }
-}
+} */
 
-export default connect(mapStateToProps,)(App);
+//export default connect(mapStateToProps,)(App);
 

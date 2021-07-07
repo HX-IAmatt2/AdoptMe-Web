@@ -1,14 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import {setLayer} from '../actions/actions.js'
+import {useDispatch} from 'react-redux'
+
 import styles from './Nav.module.css';
 
-function Nav({ window, setWindow, typeOfEgg}) {
+function Nav({typeOfEgg}) {
+
+  const toHome = event => {
+    event.preventDefault();
+    dispatch(setLayer(0,''))
+    dispatch(setLayer(1,''))
+  }
+
+  const dispatch = useDispatch()
+
   return (
     <nav id={styles.Nav}>
       
       <Link to="/">
-      <a><img src='./img/title.png' alt='' onClick={() => setWindow({})}/></a>
+      <a><img src='./img/title.png' alt='' onClick={toHome}/></a>
       </Link>
 
       <div id={styles.buttons}>
@@ -24,7 +36,7 @@ function Nav({ window, setWindow, typeOfEgg}) {
         <Link to="/Inventario">
           <button
             className="btn btn-info"
-            onClick={() => setWindow({...window, main:''})}
+            onClick={() => dispatch(setLayer(0,''))}
             >
             Inventario
           </button>

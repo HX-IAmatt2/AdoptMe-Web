@@ -1,22 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Rename from './Rename.jsx';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { addPet, setLayer } from '../actions/actions.js';
+
+import Rename from './Rename.jsx';
 import styles from './NewPet.module.css';
 
-export default function NewPet({ pet, setPet, window, setWindow, inventario, setInventario }) {
+export default function NewPet({ pet, setPet}) {
 
-  
+  const layer0 = useSelector((state) => state.layer0);
+  const dispatch = useDispatch();
 
-  
   // Añade la mascota obtenida al inventario
   function add() {
-    setInventario([...inventario, pet]);
-    setWindow({ ...window, main: '' });
+    dispatch(addPet(pet));
+    dispatch(setLayer(0, ''));
   }
 
-  if (window.main === 'NewPet') {
-
+  if (layer0 === 'New Pet') {
     return (
       <div className={styles.box}>
         <div id={styles.header}>
@@ -24,14 +26,11 @@ export default function NewPet({ pet, setPet, window, setWindow, inventario, set
         </div>
         <div id={styles.img}>
           <img src={pet.img} alt=""></img>
-        
         </div>
 
         <Rename
           pet={pet}
           setPet={setPet}
-          window={window}
-          setWindow={setWindow}
         />
 
         <div id={styles.info}>
@@ -51,12 +50,10 @@ export default function NewPet({ pet, setPet, window, setWindow, inventario, set
         </div>
 
         <div id={styles.btnsDiv}>
-
           <button
             className="btn btn-primary"
-            onClick={() => setWindow({ ...window, popup: 'Rename' })}
+            onClick={() => dispatch(setLayer(1, 'Rename'))}
           >
-            
             Cambiar nombre
           </button>
           <Link to="/Inventario">

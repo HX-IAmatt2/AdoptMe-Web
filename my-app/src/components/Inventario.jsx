@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {connect} from 'react-redux';
 
+import {useSelector,  useDispatch} from 'react-redux'
+import {removePet} from '../actions/actions.js'
 
 import styles from './Inventario.module.css';
 
-export default function Inventario({ inventario, setInventario }) {
+export default function Inventario() {
+
+  const inventarioStore = useSelector( state => state.inventario)
+  const dispatch = useDispatch()
  
   function remove(id) {
-    setInventario(inventario.filter((pet) => pet.id !== id));
+    //setInventario(inventario.filter((pet) => pet.id !== id));
+    dispatch(removePet(id));
   }
 
-  console.log('Contenido del Inventario:', inventario);
   return (
     <div className={styles.box}>
       <div id={styles.closeDiv}>
@@ -27,15 +31,14 @@ export default function Inventario({ inventario, setInventario }) {
       </div>
 
       <div>
-        {inventario.length > 0 ? (
+        {inventarioStore.length > 0 ? (
           <ul id={styles.pets}>
-            {inventario.map((pet, i) => (
+            {inventarioStore.map((pet, i) => (
               <li key={i}>
                 <img src={pet.img} alt=""></img>
                 <h4>{pet.name}</h4>
                 <button
                   id={styles.removeBtn}
-                  //className="btn btn-danger"
                   onClick={() => remove(pet.id)}
                 >
                   <img

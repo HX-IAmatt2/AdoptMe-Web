@@ -4,7 +4,8 @@ const initialState = {
   inventario: [],
 };
 
-export default function windowReducer(state = initialState, action) {
+const windowReducer = (state = initialState, action) => {
+  
   switch (action.type) {
 
     case 'SET_LAYER':
@@ -25,3 +26,6 @@ export default function windowReducer(state = initialState, action) {
       return state;
   }
 }
+
+
+export default windowReducer

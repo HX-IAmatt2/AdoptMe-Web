@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -64,13 +64,14 @@ const NewEgg = ({ newPet, egg, setEgg }) => {
   };
 
   useEffect(() => {
-    console.log('useEffect');
-  }, [layer0]);
+   // console.log('useEffect');
+  }, []);
 
   return layer0 === 'New Egg' ? (
     <div className={styles.box}>
-      <div id={styles.titulo}>Abre tu huevo!</div>
 
+      {egg.type === 'initial'? <div id={styles.titulo}>Regalo de bienvenida!</div> : <div id={styles.titulo}>Abre tu huevo!</div>}
+      
       <div id={styles.body}>
         <input
           className="shake-slow shake-constant shake-constant--hover"

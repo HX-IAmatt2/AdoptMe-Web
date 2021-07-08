@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { Route } from 'react-router-dom';
 
 import { setLayer } from './actions/actions.js';
@@ -10,7 +11,7 @@ import NewPet from './components/NewPet/NewPet';
 import Inventario from './components/Inventario/Inventario';
 
 import { Gato, Perro, PerroAzul, GatoRosa } from './pets.js';
-import { Elefante} from './pets/safari.js'
+import { Elefante } from './pets/safari.js';
 import {
   Vaca,
   Pollo,
@@ -24,7 +25,6 @@ import {
 } from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
 const App = () => {
-
   const dispatch = useDispatch();
   const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
@@ -34,7 +34,6 @@ const App = () => {
 
   // Establece el tipo de huevo segun random
   function typeOfEgg() {
-
     let random = Math.floor(getRandom(1, 101));
 
     if (random > 0 && random <= 30) {
@@ -79,20 +78,25 @@ const App = () => {
       });
     }
 
-    console.log(random)
+    console.log(random);
     dispatch(setLayer(0, 'New Egg'));
   }
 
   // Obtiene una nueva mascota segun el huevo
   function newPet() {
     // Falta terminar de desarrollar. Farm esta listo, ya tiene todos sus pets.
+    let random = getRandom(1, 101);
+
+    if (egg.type === 'initial') {
+      if (random > 0 && random <= 50) setPet(Gato); 
+      if (random > 50 && random <= 101) setPet(Perro);
+    }
 
     if (egg.type === 'common') setPet(Gato);
 
     if (egg.type === 'broken') setPet(Perro);
 
     if (egg.type === 'farm') {
-      let random = getRandom(1, 101);
       if (random > 0 && random <= 20) setPet(Pollo); // Comunes 20%
       if (random > 20 && random <= 37.5) setPet(PatoTonto);
       if (random > 37.5 && random <= 55) setPet(Pato); // No comunes 35 %
@@ -113,6 +117,15 @@ const App = () => {
     dispatch(setLayer(0, 'New Pet'));
   }
 
+  useEffect(() => {
+    setEgg({
+      type: 'initial',
+      img: './img/eggs/Huevo_Inicial.png',
+    });
+
+    dispatch(setLayer(0, 'New Egg'));
+  }, []);
+
   return (
     <div className="App">
       <Route path="/" render={() => <Nav typeOfEgg={typeOfEgg} />} />
@@ -124,6 +137,6 @@ const App = () => {
       <Route path="/Inventario" render={() => <Inventario />} />
     </div>
   );
-}
+};
 
-export default App
+export default App;

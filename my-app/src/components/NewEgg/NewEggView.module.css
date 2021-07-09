@@ -1,6 +1,8 @@
 .box {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 15px;
     max-width: 500px;
-    height: 200px;
+    height: 250px;
     margin: auto;
     margin-top: 5rem;
     background-color: rgb(226, 157, 197);
@@ -30,4 +32,12 @@
     justify-content: center;
     align-items: center;
     align-self: center;
+}
+
+#infoBtn {
+    height: 20px;
+}
+
+.bottom {
+    margin-top: 5rem;
 }

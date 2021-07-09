@@ -4,7 +4,7 @@ import { setLayer } from '../../actions/actions.js';
 import { useDispatch } from 'react-redux';
 import styles from './Nav.module.css';
 
-const Nav = () => {
+const Nav = ({getEgg}) => {
   const toHome = () => {
     dispatch(setLayer(0, ''));
     dispatch(setLayer(1, ''));
@@ -22,7 +22,7 @@ const Nav = () => {
         <Link to="/">
           <button
             className="btn btn-primary"
-            onClick={() => {dispatch(setLayer(0, 'New Egg'))}}
+            onClick={getEgg}
           >
             Adoptar
           </button>
@@ -36,7 +36,7 @@ const Nav = () => {
             Inventario
           </button>
         </Link>
-      </div>
+      </div> 
     </nav>
   );
 };

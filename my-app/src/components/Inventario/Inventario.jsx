@@ -16,7 +16,7 @@ const Inventario = () => {
     <div className={styles.box}>
       <div id={styles.closeDiv}>
         <Link to="/">
-          <button id={styles.btnClose} className="btn btn-danger">
+          <button className="btn btn-danger">
             X
           </button>
         </Link>

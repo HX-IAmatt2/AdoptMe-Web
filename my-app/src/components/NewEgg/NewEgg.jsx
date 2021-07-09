@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState} from 'react';
+import {useDispatch } from 'react-redux';
 import NewEggView from './NewEggView.jsx';
 import { setLayer } from '../../actions/actions.js';
 
-import { Comun, Roto, Granja, Azul, Rosa, Safari } from '../../data/eggs.js';
 import { Gato, Perro, PerroAzul, GatoRosa } from '../../data/pets/pets.js';
 import { Elefante } from '../../data/pets/safari.js';
 import NewPet from '../NewPet/NewPet.jsx';
@@ -20,29 +19,17 @@ import {
 } from '../../data/pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
 
-const NewEgg = () => {
+const NewEgg = ({egg, getEgg}) => {
+
   const dispatch = useDispatch();
-  const [egg, setEgg] = useState({});
   const [pet, setPet] = useState({});
 
 
   // Devuelve un nro random entre 0 y 100 inclusive
-  const getRandom = () => Math.floor(Math.random() * (101 - 0));
+  const getRandom = () => Math.floor(Math.random() * (101 - 1));
 
-  // Establece el tipo de huevo segun random
-  useEffect(() => {
-    let random = Math.floor(getRandom());
-
-    if (random > 0 && random <= 30) setEgg(Comun);
-    if (random > 30 && random <= 50) setEgg(Roto);
-    if (random > 50 && random <= 70) setEgg(Granja);
-    if (random > 70 && random <= 80) setEgg(Azul);
-    if (random > 80 && random <= 90) setEgg(Rosa);
-    if (random > 90 && random <= 100) setEgg(Safari);
-  });
-
-  // Create
-
+  // Obtiene una nueva mascota segun el huevo
+  // Falta completar. Farm esta listo, ya tiene todos sus pets.
   const newPet = () => {
 
     let random = Math.floor(getRandom());
@@ -86,7 +73,7 @@ const NewEgg = () => {
     
   return ( 
     <>
-    <NewEggView egg={egg} newPet={newPet}/>
+    <NewEggView egg={egg} newPet={newPet} getEgg={getEgg}/>
     <NewPet pet={pet} setPet={setPet}/>
     </>
     )

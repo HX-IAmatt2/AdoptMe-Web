@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { setLayer } from '../../actions/actions.js';
 import { useDispatch } from 'react-redux';
-
 import styles from './Nav.module.css';
 
-const Nav = ({ typeOfEgg }) => {
-  
-  const toHome = (event) => {
+const Nav = () => {
+  const toHome = () => {
     dispatch(setLayer(0, ''));
     dispatch(setLayer(1, ''));
   };
@@ -23,7 +20,10 @@ const Nav = ({ typeOfEgg }) => {
 
       <div id={styles.buttons}>
         <Link to="/">
-          <button className="btn btn-primary" onClick={() => typeOfEgg()}>
+          <button
+            className="btn btn-primary"
+            onClick={() => {dispatch(setLayer(0, 'New Egg'))}}
+          >
             Adoptar
           </button>
         </Link>
@@ -42,6 +42,3 @@ const Nav = ({ typeOfEgg }) => {
 };
 
 export default Nav;
-
-
-//dispatch(setLayer(0,'New Egg'))

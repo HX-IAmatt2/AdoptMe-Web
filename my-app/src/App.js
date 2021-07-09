@@ -10,30 +10,17 @@ import NewEgg from './components/NewEgg/NewEgg';
 import NewPet from './components/NewPet/NewPet';
 import Inventario from './components/Inventario/Inventario';
 
-import { Inicial, Comun, Roto, Granja, Azul, Rosa, Safari } from './eggs.js';
-import { Gato, Perro, PerroAzul, GatoRosa } from './pets.js';
-import { Elefante } from './pets/safari.js';
-import {
-  Vaca,
-  Pollo,
-  PatoTonto,
-  Pato,
-  Cerdo,
-  Pavo,
-  Llama,
-  Buho,
-  Cuervo,
-} from './pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
+import { Inicial } from './data/eggs.js';
+
 
 const App = () => {
   const dispatch = useDispatch();
   const [egg, setEgg] = useState({});
-  const [pet, setPet] = useState({});
 
   // Devuelve un nro random entre 0 y 100 inclusive
   const getRandom = () => Math.floor(Math.random() * (101 - 0));
 
-  // Establece el tipo de huevo segun random
+  /*  // Establece el tipo de huevo segun random
   const typeOfEgg = () => {
     let random = Math.floor(getRandom());
 
@@ -45,11 +32,11 @@ const App = () => {
     if (random > 90 && random <= 100) setEgg(Safari);
 
     dispatch(setLayer(0, 'New Egg'));
-  };
+  }; */
 
   // Obtiene una nueva mascota segun el huevo
   // Falta completar. Farm esta listo, ya tiene todos sus pets.
-  const newPet = () => {
+  /* const newPet = () => {
     let random = Math.floor(getRandom());
 
     switch (egg.type) {
@@ -83,26 +70,26 @@ const App = () => {
       case 'safari':
         setPet(Elefante);
         break;
+      default:
+        break;
     }
 
     dispatch(setLayer(0, 'New Pet'));
-  }
+  }; */
 
   // Da un huevo de bienvenida de regalo por única vez.
-  useEffect(() => {
+/*   useEffect(() => {
     setEgg(Inicial);
     dispatch(setLayer(0, 'New Egg'));
-  }, []);
+  }, []); */
 
   return (
     <div className="App">
       <Route path="/">
-        <Nav typeOfEgg={typeOfEgg} />
+        <Nav  />
       </Route>
-
-      <NewEgg newPet={newPet} egg={egg} />
-
-      <NewPet pet={pet} setPet={setPet} />
+      
+      <NewEgg/>
 
       <Route path="/Inventario">
         <Inventario />

@@ -1,88 +1,97 @@
-import React, { useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import NewEggView from './NewEggView.jsx';
 import { setLayer } from '../../actions/actions.js';
 
-import styles from './NewEgg.module.css';
+import { Comun, Roto, Granja, Azul, Rosa, Safari } from '../../data/eggs.js';
+import { Gato, Perro, PerroAzul, GatoRosa } from '../../data/pets/pets.js';
+import { Elefante } from '../../data/pets/safari.js';
+import NewPet from '../NewPet/NewPet.jsx';
+import {
+  Vaca,
+  Pollo,
+  PatoTonto,
+  Pato,
+  Cerdo,
+  Pavo,
+  Llama,
+  Buho,
+  Cuervo,
+} from '../../data/pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
 
-const NewEgg = ({ newPet, egg, setEgg }) => {
-  
+
+const NewEgg = () => {
   const dispatch = useDispatch();
-  const layer0 = useSelector((state) => state.layer0);
+  const [egg, setEgg] = useState({});
+  const [pet, setPet] = useState({});
 
-  // hay que agregar UseEffect para aplicar la logica dentro del componente
+
+  // Devuelve un nro random entre 0 y 100 inclusive
+  const getRandom = () => Math.floor(Math.random() * (101 - 0));
 
   // Establece el tipo de huevo segun random
-  const openEgg = () => {
-    // Devuelve un nro random entre 0 y 100 inclusive
-    const getRandom = () => Math.floor(Math.random() * (101 - 0));
-
-    let random = getRandom();
-
-    if (random > 0 && random <= 30) {
-      setEgg({
-        type: 'common',
-        img: './img/eggs/Huevo_de_mascota.png',
-      });
-    }
-
-    if (random > 30 && random <= 50) {
-      setEgg({
-        type: 'broken',
-        img: './img/eggs/Huevo_roto.png',
-      });
-    }
-
-    if (random > 50 && random <= 70) {
-      setEgg({
-        type: 'farm',
-        img: './img/eggs/Huevo_de_Granja.png',
-      });
-    }
-
-    if (random > 70 && random <= 80) {
-      setEgg({
-        type: 'blue',
-        img: './img/eggs/Huevo_azul.png',
-      });
-    }
-
-    if (random > 80 && random <= 90) {
-      setEgg({
-        type: 'pink',
-        img: './img/eggs/Huevo_rosa.png',
-      });
-    }
-
-    if (random > 90 && random <= 100) {
-      setEgg({
-        type: 'safari',
-        img: './img/eggs/Huevo_de_Safari.png',
-      });
-    }
-  };
-
   useEffect(() => {
-   // console.log('useEffect');
-  }, []);
+    let random = Math.floor(getRandom());
 
-  return layer0 === 'New Egg' ? (
-    <div className={styles.box}>
+    if (random > 0 && random <= 30) setEgg(Comun);
+    if (random > 30 && random <= 50) setEgg(Roto);
+    if (random > 50 && random <= 70) setEgg(Granja);
+    if (random > 70 && random <= 80) setEgg(Azul);
+    if (random > 80 && random <= 90) setEgg(Rosa);
+    if (random > 90 && random <= 100) setEgg(Safari);
+  });
 
-      {egg.type === 'initial'? <div id={styles.titulo}>Regalo de bienvenida!</div> : <div id={styles.titulo}>Abre tu huevo!</div>}
-      
-      <div id={styles.body}>
-        <input
-          className="shake-slow shake-constant shake-constant--hover"
-          type="image"
-          alt=""
-          src={egg.img}
-          onClick={() => newPet()}
-        />
-      </div>
-    </div>
-  ) : null;
+  // Create
+
+  const newPet = () => {
+
+    let random = Math.floor(getRandom());
+
+    switch (egg.type) {
+      case 'initial':
+        if (random > 0 && random <= 50) setPet(Gato);
+        if (random > 50 && random <= 101) setPet(Perro);
+        break;
+      case 'common':
+        setPet(Gato);
+        break;
+      case 'broken':
+        setPet(Perro);
+        break;
+      case 'farm':
+        if (random > 0 && random <= 20) setPet(Pollo); // Comunes 20%
+        if (random > 20 && random <= 37.5) setPet(PatoTonto);
+        if (random > 37.5 && random <= 55) setPet(Pato); // No comunes 35 %
+        if (random > 55 && random <= 68.5) setPet(Cerdo);
+        if (random > 68.5 && random <= 82) setPet(Vaca); // Raros 27%
+        if (random > 82 && random <= 89.5) setPet(Pavo);
+        if (random > 89.5 && random <= 97) setPet(Llama); // Ultra Raros 15%
+        if (random > 97 && random <= 98.5) setPet(Buho);
+        if (random > 98.5 && random <= 100) setPet(Cuervo); // Legendarios 3 %
+        break;
+      case 'blue':
+        setPet(PerroAzul);
+        break;
+      case 'pink':
+        setPet(GatoRosa);
+        break;
+      case 'safari':
+        setPet(Elefante);
+        break;
+      default:
+        break;
+    }
+    dispatch(setLayer(0, 'New Pet'))
+  }
+    
+  return ( 
+    <>
+    <NewEggView egg={egg} newPet={newPet}/>
+    <NewPet pet={pet} setPet={setPet}/>
+    </>
+    )
 };
 
 export default NewEgg;
+
+

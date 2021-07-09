@@ -1,16 +1,70 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addPet, setLayer } from '../../actions/actions.js';
+import { Gato, Perro, PerroAzul, GatoRosa } from '../../data/pets/pets.js';
+import { Elefante } from '../../data/pets/safari.js';
+import {
+  Vaca,
+  Pollo,
+  PatoTonto,
+  Pato,
+  Cerdo,
+  Pavo,
+  Llama,
+  Buho,
+  Cuervo,
+} from '../../data/pets/farm.js'; // No hay Api de AdoptMe, traigo de aca las pets
+import NewPetView from './NewPetView.jsx';
 
-import Rename from '../Rename/Rename.jsx';
-import styles from './NewPet.module.css';
-
-
-const NewPet = ({ pet, setPet }) => {
-  const layer0 = useSelector((state) => state.layer0);
+const NewPet = ({ egg, pet, setPet }) => {
   const dispatch = useDispatch();
+  //const [pet, setPet] = useState({});
+
+
+  const getRandom = () => Math.floor(Math.random() * (101 - 0));
+
+
+/* useEffect (() => {
+
+  let random = Math.floor(getRandom());
+
+    switch (egg.type) {
+      case 'initial':
+        if (random > 0 && random <= 50) setPet(Gato);
+        if (random > 50 && random <= 101) setPet(Perro);
+        break;
+      case 'common':
+        setPet(Gato);
+        break;
+      case 'broken':
+        setPet(Perro);
+        break;
+      case 'farm':
+        if (random > 0 && random <= 20) setPet(Pollo); // Comunes 20%
+        if (random > 20 && random <= 37.5) setPet(PatoTonto);
+        if (random > 37.5 && random <= 55) setPet(Pato); // No comunes 35 %
+        if (random > 55 && random <= 68.5) setPet(Cerdo);
+        if (random > 68.5 && random <= 82) setPet(Vaca); // Raros 27%
+        if (random > 82 && random <= 89.5) setPet(Pavo);
+        if (random > 89.5 && random <= 97) setPet(Llama); // Ultra Raros 15%
+        if (random > 97 && random <= 98.5) setPet(Buho);
+        if (random > 98.5 && random <= 100) setPet(Cuervo); // Legendarios 3 %
+        break;
+      case 'blue':
+        setPet(PerroAzul);
+        break;
+      case 'pink':
+        setPet(GatoRosa);
+        break;
+      case 'safari':
+        setPet(Elefante);
+        break;
+      default:
+        break;
+    }
+
+},[]) */
 
 
   // Añade la mascota obtenida al inventario
@@ -19,50 +73,19 @@ const NewPet = ({ pet, setPet }) => {
     dispatch(setLayer(0, ''));
   };
 
-  if (layer0 === 'New Pet') {
-    return (
-      <div className={styles.box}>
-        <div id={styles.header}>
-          <h2>Obtuviste {pet.description}!</h2>
-        </div>
-        <div id={styles.img}>
-          <img src={pet.img} alt=""></img>
-        </div>
+  // Renderiza Rename
+  const rename = () => {
+    dispatch(setLayer(1, 'Rename'));
+  };
 
-        <Rename pet={pet} setPet={setPet} />
+  console.log(pet)
 
-        <div id={styles.info}>
-          <ul>
-            <li key="name">Nombre: {pet.name}</li>
-            <li key="type">Rareza: {pet.rareza}</li>
-            <li key="age">Edad: {pet.age}</li>
-            <li key="tricks">
-              Trucos:
-              <ul id={styles.trickList}>
-                {pet.trucos.map((truco, i) => (
-                  <li key={i}> {truco} </li>
-                ))}
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        <div id={styles.btnsDiv}>
-          <button
-            className="btn btn-primary"
-            onClick={() => dispatch(setLayer(1, 'Rename'))}
-          >
-            Cambiar nombre
-          </button>
-          <Link to="/Inventario">
-            <button className="btn btn-success" onClick={() => add()}>
-              Guardar en inventario
-            </button>
-          </Link>
-        </div>
-      </div>
-    );
-  } else return null;
+  return (
+  
+  <NewPetView pet={pet} setPet={setPet} add={add} rename={rename} />
+)
 };
 
 export default NewPet;
+
+

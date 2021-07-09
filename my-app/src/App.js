@@ -34,7 +34,7 @@ const App = () => {
   const getRandom = () => Math.floor(Math.random() * (101 - 0));
 
   // Establece el tipo de huevo segun random
-  function typeOfEgg() {
+  const typeOfEgg = () => {
     let random = Math.floor(getRandom());
 
     if (random > 0 && random <= 30) setEgg(Comun);
@@ -44,13 +44,12 @@ const App = () => {
     if (random > 80 && random <= 90) setEgg(Rosa);
     if (random > 90 && random <= 100) setEgg(Safari);
 
-    console.log(random);
     dispatch(setLayer(0, 'New Egg'));
-  }
+  };
 
   // Obtiene una nueva mascota segun el huevo
   // Falta completar. Farm esta listo, ya tiene todos sus pets.
-  function newPet() {
+  const newPet = () => {
     let random = Math.floor(getRandom());
 
     switch (egg.type) {
@@ -97,7 +96,6 @@ const App = () => {
 
   return (
     <div className="App">
-      
       <Route path="/">
         <Nav typeOfEgg={typeOfEgg} />
       </Route>

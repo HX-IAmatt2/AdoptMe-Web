@@ -14,6 +14,7 @@ import {
   Azul,
   Rosa,
   Safari,
+  Selva,
 } from './data/eggs.js';
 
 const App = () => {
@@ -32,9 +33,10 @@ const App = () => {
   // Establece el tipo de huevo segun random
   const getEgg = () => {
     let random = Math.floor(getRandom());
-    if (random > 0 && random <= 30) setEgg(Comun);
-    if (random > 30 && random <= 50) setEgg(Roto);
-    if (random > 50 && random <= 70) setEgg(Granja);
+    if (random > 0 && random <= 30) setEgg(Roto);
+    if (random > 20 && random <= 50) setEgg(Comun);
+    if (random > 50 && random <= 60) setEgg(Granja);
+    if (random > 60 && random <= 70) setEgg(Selva);
     if (random > 70 && random <= 80) setEgg(Azul);
     if (random > 80 && random <= 90) setEgg(Rosa);
     if (random > 90 && random <= 100) setEgg(Safari);

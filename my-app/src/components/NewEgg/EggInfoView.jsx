@@ -28,7 +28,7 @@ const EggInfo = ({ egg, closeEggInfo }) => {
             <div>
                 <h4>Costo</h4>
                 <span>  {egg.cost}</span>
-                <span> <img src={bucks} /></span>
+                <span> <img src={bucks} alt='' /></span>
             </div>
 
             <div>

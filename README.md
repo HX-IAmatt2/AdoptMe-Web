@@ -8,11 +8,7 @@ fonts a probar:
 
 ideas:
 
-- recibir un huevo que contenga una mascota random
-- se rompe y adoptamos esa mascota
-- bautizar con nombre propio
 - stats con caracteristicas la mascota.
-- definir clases
 
 links:
 

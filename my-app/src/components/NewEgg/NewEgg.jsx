@@ -10,7 +10,7 @@ const NewEgg = ({ egg, getEgg }) => {
   const [pet, setPet] = useState({})
 
   // Devuelve un nro random entre 0 y 100 inclusive
-  const getRandom = () => Math.floor(Math.random() * 100) + 1
+  const getRandom = () => Math.floor(Math.random() * 100)
 
   // Obtiene una nueva mascota segun el huevo
   // Falta completar. Farm esta listo, ya tiene todos sus pets.
@@ -21,31 +21,31 @@ const NewEgg = ({ egg, getEgg }) => {
 
     switch (egg.type) {
       case 'initial':
-        if (random > 0 && random <= 50) fetchPet = 'Gato'
-        if (random > 50 && random <= 101) fetchPet = 'Perro'
+        if (random > 0 && random <= 50) fetchPet = 'gato'
+        if (random > 50 && random <= 100) fetchPet = 'perro'
         break
       case 'common':
-        fetchPet = 'Gato'
+        fetchPet = 'gato'
         break
       case 'broken':
-        fetchPet = 'Perro'
+        fetchPet = 'perro'
         break
       case 'farm':
-        if (random > 0 && random <= 20) fetchPet = 'Pollo' // Comunes 20%
-        if (random > 20 && random <= 37.5) fetchPet = 'PatoTonto'
-        if (random > 37.5 && random <= 55) fetchPet = 'Pato' // Poco comunes 35 %
-        if (random > 55 && random <= 68.5) fetchPet = 'Cerdo'
-        if (random > 68.5 && random <= 82) fetchPet = 'Vaca' // Raros 27%
-        if (random > 82 && random <= 89.5) fetchPet = 'Pavo'
-        if (random > 89.5 && random <= 97) fetchPet = 'Llama' // Ultra Raros 15%
-        if (random > 97 && random <= 98.5) fetchPet = 'Buho'
-        if (random > 98.5 && random <= 100) fetchPet = 'Cuervo' // Legendarios 3 %
+        if (random > 0 && random <= 20) fetchPet = 'pollo' // Comunes 20%
+        if (random > 20 && random <= 37.5) fetchPet = 'patoTonto'
+        if (random > 37.5 && random <= 55) fetchPet = 'pato' // Poco comunes 35 %
+        if (random > 55 && random <= 68.5) fetchPet = 'cerdo'
+        if (random > 68.5 && random <= 82) fetchPet = 'vaca' // Raros 27%
+        if (random > 82 && random <= 89.5) fetchPet = 'pavo'
+        if (random > 89.5 && random <= 97) fetchPet = 'llama' // Ultra Raros 15%
+        if (random > 97 && random <= 98.5) fetchPet = 'buho'
+        if (random > 98.5 && random <= 100) fetchPet = 'cuervo' // Legendarios 3 %
         break
       case 'blue':
-        fetchPet = 'PerroAzul'
+        fetchPet = 'perroAzul'
         break
       case 'pink':
-        fetchPet = 'GatoRosa'
+        fetchPet = 'gatoRosa'
         break
       case 'safari':
         if (random > 0 && random <= 22.5) fetchPet = 'jabali' // Poco comunes 45%
@@ -59,7 +59,7 @@ const NewEgg = ({ egg, getEgg }) => {
         break
 
       case 'jungle':
-        fetchPet = 'Carpincho'
+        fetchPet = 'carpincho'
         break
 
       default:

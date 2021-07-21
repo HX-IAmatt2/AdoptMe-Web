@@ -1,6 +1,6 @@
 const Pets = {
 
-  Gato: {
+  gato: {
     raza: 'gato',
     name: 'Gato',
     description: 'un gato',
@@ -17,7 +17,7 @@ const Pets = {
     ]
   },
 
-  Perro: {
+  perro: {
     raza: 'perro',
     name: 'Perro',
     description: 'un perro',
@@ -34,7 +34,7 @@ const Pets = {
     ]
   },
 
-  PerroAzul: {
+  perroAzul: {
     raza: 'perro azul',
     name: 'Perro Azul',
     description: 'un perro azul',
@@ -51,7 +51,7 @@ const Pets = {
     ]
   },
 
-  GatoRosa: {
+  gatoRosa: {
     raza: 'gato rosa',
     name: 'Gato Rosa',
     description: 'un gato rosa',
@@ -68,7 +68,7 @@ const Pets = {
     ]
   },
 
-  Pollo: {
+  pollo: {
     raza: 'pollo',
     name: 'Pollo',
     description: 'un pollo',
@@ -85,7 +85,7 @@ const Pets = {
     ]
   },
 
-  PatoTonto: {
+  patoTonto: {
     raza: 'pato tonto',
     name: 'Pato Tonto',
     description: 'un pato tonto',
@@ -102,7 +102,7 @@ const Pets = {
     ]
   },
 
-  Pato: {
+  pato: {
     raza: 'pato',
     name: 'Pato',
     description: 'un pato',
@@ -119,7 +119,7 @@ const Pets = {
     ]
   },
 
-  Vaca: {
+  vaca: {
     raza: 'vaca',
     name: 'Vaca',
     description: 'una vaca',
@@ -135,7 +135,7 @@ const Pets = {
     ]
   },
 
-  Cerdo: {
+  cerdo: {
     raza: 'cerdo',
     name: 'Cerdo',
     description: 'un cerdo',
@@ -152,7 +152,7 @@ const Pets = {
     ]
   },
 
-  Pavo: {
+  pavo: {
     raza: 'pavo',
     name: 'Pavo',
     description: 'un pavo',
@@ -169,7 +169,7 @@ const Pets = {
     ]
   },
 
-  Llama: {
+  llama: {
     raza: 'llama',
     name: 'Llama',
     description: 'una llama',
@@ -186,7 +186,7 @@ const Pets = {
     ]
   },
 
-  Buho: {
+  buho: {
     raza: 'búho',
     name: 'Búho',
     description: 'un búho',
@@ -203,7 +203,7 @@ const Pets = {
     ]
   },
 
-  Cuervo: {
+  cuervo: {
     raza: 'cuervo',
     name: 'Cuervo',
     description: 'un cuervo',
@@ -220,7 +220,7 @@ const Pets = {
     ]
   },
 
-  Carpincho: {
+  carpincho: {
     raza: 'carpincho',
     name: 'Carpincho',
     description: 'un carpincho',
@@ -353,6 +353,25 @@ const Pets = {
       'Acostarse (Junior)',
       'Rebotar (preadolescente)',
       'Rodar (Adolecente)',
+      'Voltereta (Adulto Joven)',
+      'Baile (Crecido Completamente)'
+    ]
+  },
+
+  // DE HUEVO ROTO
+
+  bufalo: {
+    raza: 'bufalo',
+    name: 'Búfalo',
+    description: 'un búfalo',
+    img: './img/pets/bufalo.png',
+    age: 'Recién nacido',
+    rarity: 'Común',
+    trucos: [
+      'Sentarse (Recien Nacido)',
+      'Acostarse (Junior)',
+      'Rebotar (preadolescente)',
+      'Volcar (Adolecente)',
       'Voltereta (Adulto Joven)',
       'Baile (Crecido Completamente)'
     ]

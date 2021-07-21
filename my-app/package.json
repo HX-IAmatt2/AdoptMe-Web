@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
+    "standard": "^16.0.3",
     "url-loader": "^4.1.1"
   }
 }

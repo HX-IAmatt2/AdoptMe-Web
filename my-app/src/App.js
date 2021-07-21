@@ -6,42 +6,42 @@ import NewEgg from './components/NewEgg/NewEgg';
 import Inventario from './components/Inventario/Inventario';
 import { setLayer } from './actions/actions.js';
 
-import {
-  Inicial,
-  Comun,
-  Roto,
-  Granja,
-  Azul,
-  Rosa,
-  Safari,
-  Selva,
-} from './data/eggs.js';
-
 const App = () => {
   const dispatch = useDispatch();
   const [egg, setEgg] = useState({});
 
   // Da un huevo de bienvenida de regalo por única vez.
   useEffect(() => {
-    setEgg(Inicial);
-    dispatch(setLayer(0, 'New Egg'));
+    getEgg('Inicial');
   }, []);
 
   // Devuelve un nro random entre 0 y 100 inclusive
   const getRandom = () => Math.floor(Math.random() * (101 - 1));
 
-  // Establece el tipo de huevo segun random
-  const getEgg = () => {
-    let random = Math.floor(getRandom());
-    if (random > 0 && random <= 30) setEgg(Roto);
-    if (random > 20 && random <= 50) setEgg(Comun);
-    if (random > 50 && random <= 60) setEgg(Granja);
-    if (random > 60 && random <= 70) setEgg(Selva);
-    if (random > 70 && random <= 80) setEgg(Azul);
-    if (random > 80 && random <= 90) setEgg(Rosa);
-    if (random > 90 && random <= 100) setEgg(Safari);
+  // Establece el tipo de huevo
+  const getEgg = async (egg) => {
+    let fetchEgg = '';
+
+    if (egg === 'Inicial') fetchEgg = egg;
+    else {
+      const random = Math.floor(getRandom());
+      if (random > 0 && random <= 30) fetchEgg = 'Roto';
+      if (random > 20 && random <= 50) fetchEgg = 'Comun';
+      if (random > 50 && random <= 60) fetchEgg = 'Granja';
+      if (random > 60 && random <= 70) fetchEgg = 'Selva';
+      if (random > 70 && random <= 80) fetchEgg = 'Azul';
+      if (random > 80 && random <= 90) fetchEgg = 'Rosa';
+      if (random > 90 && random <= 100) fetchEgg = 'Safari';
+      console.log(`numero obtenido: ${random} (huevo ${fetchEgg})`);
+    }
+    try {
+      let response = await fetch('http://localhost:3001/eggs/' + fetchEgg);
+      setEgg(await response.json());
+    } catch (error) {
+      console.log('Error en Fetch:', error);
+    }
+
     dispatch(setLayer(0, 'New Egg'));
-    console.log('numero obtenido:', random);
   };
 
   return (
@@ -60,3 +60,8 @@ const App = () => {
 };
 
 export default App;
+
+/*    fetch('http://localhost:3001/eggs/' + fetchEgg)
+     .then((response) => response.json())
+     .then((recurso) => setEgg(recurso))
+     .catch((error) => console.log('Error en Fetch:', error)); */

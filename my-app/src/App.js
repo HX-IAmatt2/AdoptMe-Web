@@ -4,6 +4,8 @@ import { Route } from 'react-router-dom'
 import Nav from './components/Nav/Nav.jsx'
 import NewEgg from './components/NewEgg/NewEgg'
 import Inventario from './components/Inventario/Inventario'
+import Wiki from './components/Wiki/Wiki'
+
 import { setLayer } from './actions/actions.js'
 
 const App = () => {
@@ -53,6 +55,10 @@ const App = () => {
       </Route>
 
       <NewEgg egg={egg} />
+
+      <Route path='/Wiki'>
+        <Wiki />
+      </Route>
 
       <Route path='/Inventario'>
         <Inventario />

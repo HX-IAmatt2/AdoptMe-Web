@@ -1,44 +1,54 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { setLayer } from '../../actions/actions.js';
-import { useDispatch } from 'react-redux';
-import styles from './Nav.module.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { setLayer } from '../../actions/actions.js'
+import { useDispatch } from 'react-redux'
+import styles from './Nav.module.css'
 
-const Nav = ({getEgg}) => {
+const Nav = ({ getEgg }) => {
   const toHome = () => {
-    dispatch(setLayer(0, ''));
-    dispatch(setLayer(1, ''));
-  };
+    dispatch(setLayer(0, ''))
+    dispatch(setLayer(1, ''))
+  }
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
     <nav id={styles.Nav}>
-      <Link to="/">
-        <img src="./img/title.png" alt="" onClick={toHome} />
+      <Link to='/'>
+        <img src='./img/title.png' alt='' onClick={toHome} />
       </Link>
 
       <div id={styles.buttons}>
-        <Link to="/">
+        <Link to='/'>
           <button
-            className="btn btn-primary"
+            className='btn btn-primary'
             onClick={getEgg}
           >
             Adoptar
           </button>
         </Link>
 
-        <Link to="/Inventario">
+        <Link to='/Inventario'>
           <button
-            className="btn btn-info"
+            className='btn btn-info'
             onClick={() => dispatch(setLayer(0, ''))}
           >
             Inventario
           </button>
         </Link>
-      </div> 
-    </nav>
-  );
-};
 
-export default Nav;
+        <Link to='/Wiki'>
+          <button
+            className='btn btn-info'
+            onClick={() => dispatch(setLayer(0, ''))}
+          >
+            Wiki
+          </button>
+        </Link>
+
+      </div>
+    </nav>
+  )
+}
+
+export default Nav

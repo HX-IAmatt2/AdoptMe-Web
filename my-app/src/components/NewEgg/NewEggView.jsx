@@ -1,21 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { setLayer } from '../../actions/actions.js';
-import EggInfo from './EggInfoView';
-import styles from './NewEggView.module.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { setLayer } from '../../actions/actions.js'
+import EggInfo from './EggInfoView'
+import styles from './NewEggView.module.css'
 
 const NewEggView = ({ egg, newPet, getEgg }) => {
-  const layer0 = useSelector((state) => state.layer0);
-  const dispatch = useDispatch();
+  const layer0 = useSelector((state) => state.layer0)
+  const dispatch = useDispatch()
 
   // Renderiza EggInfo en Layer1
   const eggInfo = () => {
-    dispatch(setLayer(1, 'EggInfo'));
-  };
+    dispatch(setLayer(1, 'EggInfo'))
+  }
 
   // Cierra EggInfo
   const closeEggInfo = () => {
-    dispatch(setLayer(1, ''));
-  };
+    dispatch(setLayer(1, ''))
+  }
 
   return layer0 === 'New Egg' ? (
     <div className={styles.box}>
@@ -26,9 +26,9 @@ const NewEggView = ({ egg, newPet, getEgg }) => {
       )}
       <div id={styles.body}>
         <input
-          className="shake-slow shake-constant shake-constant--hover"
-          type="image"
-          alt=""
+          className='shake-slow shake-constant shake-constant--hover'
+          type='image'
+          alt=''
           src={egg.img}
           onClick={newPet}
         />
@@ -37,16 +37,16 @@ const NewEggView = ({ egg, newPet, getEgg }) => {
       <div className={styles.bottom}>
         <input
           id={styles.infoBtn}
-          type="image"
-          src="./img/icons/info.png"
-          alt=""
+          type='image'
+          src='./img/icons/info.png'
+          alt=''
           onClick={eggInfo}
         />
       </div>
 
-      {egg.type === 'initial' ? <div></div> : null}
+      {egg.type === 'initial' ? <div /> : null}
     </div>
-  ) : null;
-};
+  ) : null
+}
 
-export default NewEggView;
+export default NewEggView

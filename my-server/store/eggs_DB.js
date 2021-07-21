@@ -1,7 +1,7 @@
 // const bucks='<img src="./img/icons/bucks.png"/>'
 const Eggs = {
 
-  Inicial: {
+  initial: {
     type: 'initial',
     img: './img/eggs/Huevo_Inicial.png',
     name: 'Huevo inicial',
@@ -12,7 +12,7 @@ const Eggs = {
     cost: 'Gratis'
   },
 
-  Azul: {
+  blue: {
     type: 'blue',
     img: './img/eggs/Huevo_azul.png',
     name: 'Huevo Azul',
@@ -23,7 +23,7 @@ const Eggs = {
     cost: '100'
   },
 
-  Rosa: {
+  pink: {
     type: 'pink',
     img: './img/eggs/Huevo_rosa.png',
     name: 'Huevo Rosa',
@@ -34,7 +34,7 @@ const Eggs = {
     cost: '100'
   },
 
-  Roto: {
+  broken: {
     type: 'broken',
     img: './img/eggs/Huevo_roto.png',
     name: 'Huevo Roto',
@@ -45,7 +45,7 @@ const Eggs = {
     cost: '350'
   },
 
-  Comun: {
+  common: {
     type: 'common',
     img: './img/eggs/Huevo_de_mascota.png',
     name: 'Huevo de mascota',
@@ -56,7 +56,7 @@ const Eggs = {
     cost: '600'
   },
 
-  Safari: {
+  safari: {
     type: 'safari',
     img: './img/eggs/Huevo_de_Safari.png',
     name: 'Huevo de Safari',
@@ -67,18 +67,18 @@ const Eggs = {
     cost: '750'
   },
 
-  Selva: {
+  jungle: {
     type: 'jungle',
     img: './img/eggs/Huevo_de_selva.png',
     name: 'Huevo de Selva',
     description:
     'El huevo de selva o huevo de jungla fue un huevo legendario y se pudo obtener de la máquina de chicles del 31 de agosto de 2019 al 22 de noviembre de 2019. Ahora es inalcanzable a menos que a través del comercio. El huevo no contiene mascotas comunes, al igual que el huevo de Safari. A diferencia de los otros huevos, no se parece a ninguna de las mascotas en su interior. Fue precedido por el huevo de Safari y sucedido por el huevo de granja.',
-    content: ['...'],
+    content: ['Carpincho - 100%'],
     rarity: 'Legendario',
     cost: '750'
   },
 
-  Granja: {
+  farm: {
     type: 'farm',
     img: './img/eggs/Huevo_de_Granja.png',
     name: 'Huevo de Granja',

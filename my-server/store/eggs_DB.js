@@ -3,7 +3,7 @@ const Eggs = {
   initial: {
     type: 'initial',
     img: './img/eggs/Huevo_Inicial.png',
-    name: 'Huevo inicial',
+    name: 'Huevo Inicial',
     description:
       'El huevo inicial es un huevo gratis que se te da cuando ingresas a Adopt Me! por primera vez. Solo eclosionará en un perro o un gato. No puedes obtenerlo en ningún otro lugar del juego y no es negociable. Solo puedes obtener uno de estos. Es el primer huevo que tiene un 100% de probabilidad de eclosionar en una mascota común, y el segundo es el huevo de Pascua 2020. También debes ser un adulto para obtener el huevo.',
     content: ['Gato - 50%', 'Perro - 50%'],
@@ -47,7 +47,7 @@ const Eggs = {
   common: {
     type: 'common',
     img: './img/eggs/Huevo_de_mascota.png',
-    name: 'Huevo de mascota',
+    name: 'Huevo de Mascota',
     description:
       'El huevo de mascota es un huevo raro y está disponible para siempre en la guardería. Es más probable que se convierta en una mascota poco común (35%). Todas las mascotas que no pertenecen a un huevo limitado o a una mascota de un pase de juego están disponibles en este huevo, como el dragón, el Gato de las nieves y el perro, por nombrar a algunos. Su apariencia es un huevo completamente blanco, liso, sin otros accesorios ni detalles. Los jugadores pueden comprárselo a Holly, la amante de los gatos en la guardería.',
     content: ['Gato - 100%'],

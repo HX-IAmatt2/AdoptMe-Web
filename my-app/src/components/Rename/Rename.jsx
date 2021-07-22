@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
-import { badWordsSpa } from '../../data/badWords.js';
-import { setLayer } from '../../actions/actions.js';
-import { useDispatch } from 'react-redux';
-import RenameView from './RenameView.jsx';
+import React, { useState } from 'react'
+import { badWordsSpa } from '../../data/badWords.js'
+import { setLayer } from '../../actions/actions.js'
+import { useDispatch } from 'react-redux'
+import RenameView from './RenameView.jsx'
 
 const Rename = ({ pet, setPet }) => {
-  const dispatch = useDispatch();
-  const [newName, setnewName] = useState(pet.name);
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch()
+  const [newName, setnewName] = useState(pet.name)
+  const [error, setError] = useState(false)
 
   const handleChange = (value) => {
-    setError(false);
-    if (badWordsSpa.includes(value.toLowerCase()))
-      setError(`Insultos no permitidos!`);
-    if (value.length < 3) setError('Debe tener al menos 3 caracteres');
-    if (value === '') setError('Ingresa un nuevo nombre');
-    setnewName(value);
-  };
+    setError(false)
+    if (badWordsSpa.includes(value.toLowerCase())) { setError('Insultos no permitidos!') }
+    if (value.length < 3) setError('Debe tener al menos 3 caracteres')
+    if (value === '') setError('Ingresa un nuevo nombre')
+    setnewName(value)
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     if (!error) {
-      setPet((prev) => ({ ...prev, name: newName })); // cambia la prop name de pet
-      dispatch(setLayer(1, ''));
+      setPet((prev) => ({ ...prev, name: newName })) // cambia la prop name de pet
+      dispatch(setLayer(1, ''))
     }
-  };
+  }
 
   return (
     <RenameView
@@ -34,7 +33,7 @@ const Rename = ({ pet, setPet }) => {
       handleChange={handleChange}
       handleSubmit={handleSubmit}
     />
-  );
-};
+  )
+}
 
-export default Rename;
+export default Rename

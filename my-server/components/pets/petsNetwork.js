@@ -3,7 +3,7 @@ const router = express.Router()
 const PetsController = require('./petsController')
 
 router.get('/:petName', (req, res) => {
-  const paramName = req.params.petName.toLowerCase()
+  const paramName = req.params.petName// .toLowerCase()
 
   if (paramName === 'all') {
     if (req.query.rarity) {

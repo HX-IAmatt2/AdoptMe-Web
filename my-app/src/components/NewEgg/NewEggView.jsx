@@ -32,7 +32,9 @@ const NewEggView = ({ egg, newPet, getEgg }) => {
           src={egg.img}
           onClick={newPet}
         />
+
         <EggInfo egg={egg} closeEggInfo={closeEggInfo} />
+
       </div>
       <div className={styles.bottom}>
         <input

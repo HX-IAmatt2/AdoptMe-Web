@@ -3,7 +3,9 @@ const Eggs = require('../../store/eggs_DB')
 const EggsController = {
 
   all: () => {
-    return [Eggs]
+    const result = []
+    for (const item in Eggs) result.push(Eggs[item])
+    return result
   },
 
   byName: (paramName) => {

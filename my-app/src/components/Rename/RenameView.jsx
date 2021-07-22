@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import styles from './RenameView.module.css';
+import { useSelector } from 'react-redux'
+import styles from './RenameView.module.css'
 
 const RenameView = ({ pet, newName, error, handleChange, handleSubmit }) => {
-  const layer1 = useSelector((state) => state.layer1);
+  const layer1 = useSelector((state) => state.layer1)
 
   if (layer1 === 'Rename') {
     return (
@@ -13,15 +13,15 @@ const RenameView = ({ pet, newName, error, handleChange, handleSubmit }) => {
 
         <form
           id={styles.inputDiv}
-          className="form-inline"
+          className='form-inline'
           onSubmit={handleSubmit}
         >
           <input
             id={styles.input}
-            className="form-control mr-sm-2"
-            type="text"
-            name="name"
-            key="name"
+            className='form-control mr-sm-2'
+            type='text'
+            name='name'
+            key='name'
             value={newName}
             onChange={(event) => handleChange(event.target.value)}
           />
@@ -33,7 +33,7 @@ const RenameView = ({ pet, newName, error, handleChange, handleSubmit }) => {
                 ? 'disabled btn btn-success my-2 my-sm-0'
                 : 'btn btn-success my-2 my-sm-0'
             }
-            type="submit"
+            type='submit'
           >
             OK
           </button>
@@ -41,8 +41,8 @@ const RenameView = ({ pet, newName, error, handleChange, handleSubmit }) => {
           {error ? <h5>{error}</h5> : null}
         </form>
       </div>
-    );
-  } else return null;
+    )
+  } else return null
 };
 
-export default RenameView;
+export default RenameView

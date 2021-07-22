@@ -117,6 +117,7 @@ const Wiki = () => {
                 {item.name} ({item.rarity})
                 <input
                   type='image'
+                  alt=''
                   src={item.img}
                   onClick={() => eggInfo(item)}
                 />

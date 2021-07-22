@@ -19,7 +19,7 @@ const EggInfo = ({ egg, closeEggInfo }) => {
         <div className={styles.body}>
           <h3>{egg.name}</h3>
 
-          <img className={styles.img} src={egg.img} />
+          <img className={styles.img} alt='' src={egg.img} />
 
           <div className={styles.description}>
             <p>{egg.description}</p>

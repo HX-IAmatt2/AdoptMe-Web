@@ -10,12 +10,13 @@ import styles from './Wiki.module.css'
 const Wiki = () => {
   const dispatch = useDispatch()
   const [list, setList] = useState({})
-  const [filter, setFilter] = useState('Todos')
+  const [category, setCategory] = useState('eggs')
+  const [rarity, setRarity] = useState('Todos')
   const [egg, setEgg] = useState({}) /// PASAR AL STORE DE REDUX
 
   useEffect(() => {
-    listEggs()
-  }, [filter])
+    makeList()
+  }, [category, rarity])
 
   // Renderiza EggInfo en Layer1
   const eggInfo = (value) => {
@@ -28,12 +29,14 @@ const Wiki = () => {
     dispatch(setLayer(1, ''))
   }
 
-  const listEggs = async () => {
+  const makeList = async () => {
     let response = ''
     try {
-      if (filter.toLocaleLowerCase() === 'todos') { response = await fetch('http://localhost:3001/eggs/all') } else {
+      if (rarity.toLowerCase() === 'todos') {
+        response = await fetch(`http://localhost:3001/${category}/all`)
+      } else {
         response = await fetch(
-          'http://localhost:3001/eggs/all?rarity=' + filter
+          `http://localhost:3001/${category}/all?rarity=${rarity}`
         )
       }
       setList(await response.json())
@@ -42,15 +45,9 @@ const Wiki = () => {
     }
   }
 
-  const handleChange = (value) => {
-    setFilter(value)
-  }
-
   return (
     <div className={styles.box}>
-
       <div id={styles.closeDiv}>
-
         <Link to='/'>
           <button className='btn btn-danger'>X</button>
         </Link>
@@ -58,43 +55,71 @@ const Wiki = () => {
 
       <div id={styles.header}>
         <h2>Wiki</h2>
-
       </div>
 
       <div className={styles.body}>
         <EggInfo egg={egg} closeEggInfo={closeEggInfo} />
-
-        <br /> <br />
-        <h3>Huevos</h3>
-
       </div>
 
-      <div>
-        {list.length > 0 ? <h4>Filtrar por rareza:</h4> : null}
+      <div className={styles.options}>
 
-        <select
-          class='form-select form-select-sm'
-          aria-label='.form-select-sm example'
-          onChange={(event) => handleChange(event.target.value)}
-        >
-          <option value='Todos'>Todos</option>
-          <option value='Común'>Comúm</option>
-          <option value='Raro'>Raro</option>
-          <option value='Legendario'>Legendario</option>
-        </select>
+        <div>
+          {list.length > 0 ? <h4>Categoría:</h4> : null}
 
+          <select
+            class='form-select form-select-sm'
+            aria-label='.form-select-sm example'
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            <option value='eggs'>Huevos</option>
+            <option value='pets'>Mascotas</option>
+          </select>
+        </div>
+
+        <div>
+          {list.length > 0 ? <h4>Rareza:</h4> : null}
+
+          {category === 'eggs'
+            ? (
+              <select
+                class='form-select form-select-sm'
+                aria-label='.form-select-sm example'
+                onChange={(event) => setRarity(event.target.value)}
+              >
+                <option value='Todos'>Todos</option>
+                <option value='Común'>Comunes</option>
+                <option value='Raro'>Raros</option>
+                <option value='Legendario'>Legendarios</option>
+              </select>
+              )
+            : (
+              <select
+                class='form-select form-select-sm'
+                aria-label='.form-select-sm example'
+                onChange={(event) => setRarity(event.target.value)}
+              >
+                <option value='Todos'>Todos</option>
+                <option value='Común'>Comunes</option>
+                <option value='Poco Común'>Poco comunes</option>
+                <option value='Raro'>Raros</option>
+                <option value='Ultra raro'>Ultra raros</option>
+                <option value='Legendario'>Legendarios</option>
+              </select>
+              )}
+        </div>
       </div>
 
       <div className={styles.list}>
-
         <ul>
           {list.length > 0
             ? list.map((item, index) => (
-              <li key={index}>
+              <li className={styles.list} key={index}>
                 {item.name} ({item.rarity})
-                <button onClick={() => eggInfo(item)}>
-                  <img src={item.img} />
-                </button>
+                <input
+                  type='image'
+                  src={item.img}
+                  onClick={() => eggInfo(item)}
+                />
               </li>
               ))
             : null}

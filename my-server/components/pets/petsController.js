@@ -3,7 +3,9 @@ const Pets = require('../../store/pets_DB')
 const PetsController = {
 
   all: () => {
-    return Pets
+    const result = []
+    for (const item in Pets) result.push(Pets[item])
+    return result
   },
 
   byName: (paramName) => {

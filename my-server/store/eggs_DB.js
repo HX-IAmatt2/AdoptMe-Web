@@ -17,7 +17,7 @@ const Eggs = {
     name: 'Huevo Azul',
     description:
       'El huevo azul es un huevo exclusivo que sólo estaba disponible al comienzo de la Actualización de Mascotas en Adopt Me!. Fue el primer huevo junto con el huevo rosa. Sólo puede eclosionar en un perro azul poco común. Ahora sólo se puede obtener a través del comercio con otros jugadores.',
-    content: ['Perro azul - 100%'],
+    content: ['Perro Azul - 100%'],
     rarity: 'Raro',
     cost: '100'
   },

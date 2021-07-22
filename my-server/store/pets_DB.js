@@ -373,6 +373,8 @@ const Pets = {
     img: './img/pets/bufalo.png',
     age: 'Recién nacido',
     rarity: 'Común',
+    source: 'Huevo Roto - Huevo de Mascota',
+    txt: 'El búfalo es una mascota común en Adopt Me! que los jugadores pueden obtener de un huevo roto y el huevo de mascota. Fue una de las primeras mascotas comunes que se lanzó en el juego. Los jugadores también pueden obtenerlo mediante el comercio.',
     trucos: [
       'Sentarse (Recien Nacido)',
       'Acostarse (Junior)',

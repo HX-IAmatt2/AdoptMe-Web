@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Rename from '../Rename/Rename.jsx'
 import styles from './NewPetView.module.css'
 
-const NewPetView = ({ pet, setPet, add, rename }) => {
+const NewPetView = ({ pet, setPet, add, showRename }) => {
   const layer0 = useSelector((state) => state.layer0)
 
   if (layer0 === 'New Pet') {
@@ -35,7 +35,7 @@ const NewPetView = ({ pet, setPet, add, rename }) => {
         </div>
 
         <div id={styles.btnsDiv}>
-          <button className='btn btn-primary' onClick={rename}>
+          <button className='btn btn-primary' onClick={showRename}>
             Cambiar nombre
           </button>
           <Link to='/Inventario'>

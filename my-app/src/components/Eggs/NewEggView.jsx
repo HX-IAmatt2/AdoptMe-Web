@@ -1,22 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { setLayer } from '../../actions/actions.js'
-import EggInfo from './EggInfoView'
+import adoptMe from '../../functions/functions'
+import EggInfoView from './EggInfoView'
 import styles from './NewEggView.module.css'
 
-const NewEggView = ({ newPet }) => {
+const NewEggView = ({ setPet, eggInfo }) => {
   const layer0 = useSelector((state) => state.layer0)
   const egg = useSelector((state) => state.egg)
   const dispatch = useDispatch()
-
-  // Renderiza EggInfo en Layer1
-  const eggInfo = () => {
-    dispatch(setLayer(1, 'EggInfo'))
-  }
-
-  // Cierra EggInfo
-  const closeEggInfo = () => {
-    dispatch(setLayer(1, ''))
-  }
 
   return layer0 === 'New Egg'
     ? (
@@ -34,10 +24,10 @@ const NewEggView = ({ newPet }) => {
             type='image'
             alt=''
             src={egg.img}
-            onClick={newPet}
+            onClick={() => adoptMe.newPet(egg, dispatch, setPet)}
           />
 
-          <EggInfo closeEggInfo={closeEggInfo} />
+          <EggInfoView />
 
         </div>
         <div className={styles.bottom}>

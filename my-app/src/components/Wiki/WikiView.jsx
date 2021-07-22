@@ -5,7 +5,7 @@ import PetInfo from '../Pets/PetInfoView'
 
 import styles from './WikiView.module.css'
 
-const WikiView = ({ pet, egg, list, eggInfo, closeEggInfo, category, setCategory, setRarity, petInfo }) => {
+const WikiView = ({ pet, egg, list, eggInfo, category, setCategory, setRarity, petInfo }) => {
   return (
     <div className={styles.box}>
       <div id={styles.closeDiv}>
@@ -19,11 +19,11 @@ const WikiView = ({ pet, egg, list, eggInfo, closeEggInfo, category, setCategory
       </div>
 
       <div className={styles.body}>
-        <EggInfo closeEggInfo={closeEggInfo} />
+        <EggInfo />
       </div>
 
       <div className={styles.body}>
-        <PetInfo pet={pet} closeEggInfo={closeEggInfo} />
+        <PetInfo pet={pet} />
       </div>
 
       <div className={styles.options}>
@@ -31,7 +31,7 @@ const WikiView = ({ pet, egg, list, eggInfo, closeEggInfo, category, setCategory
           {list.length > 0 ? <h4>Categoría:</h4> : null}
 
           <select
-            class='form-select form-select-sm'
+            className='form-select form-select-sm'
             aria-label='.form-select-sm example'
             onChange={(event) => setCategory(event.target.value)}
           >
@@ -46,7 +46,7 @@ const WikiView = ({ pet, egg, list, eggInfo, closeEggInfo, category, setCategory
           {category === 'eggs'
             ? (
               <select
-                class='form-select form-select-sm'
+                className='form-select form-select-sm'
                 aria-label='.form-select-sm example'
                 onChange={(event) => setRarity(event.target.value)}
               >
@@ -58,7 +58,7 @@ const WikiView = ({ pet, egg, list, eggInfo, closeEggInfo, category, setCategory
               )
             : (
               <select
-                class='form-select form-select-sm'
+                className='form-select form-select-sm'
                 aria-label='.form-select-sm example'
                 onChange={(event) => setRarity(event.target.value)}
               >

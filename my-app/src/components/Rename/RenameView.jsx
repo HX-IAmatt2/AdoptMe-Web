@@ -43,6 +43,6 @@ const RenameView = ({ pet, newName, error, handleChange, handleSubmit }) => {
       </div>
     )
   } else return null
-};
+}
 
 export default RenameView

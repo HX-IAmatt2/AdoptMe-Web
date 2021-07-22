@@ -1,10 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { setLayer } from '../../actions/actions.js'
 import { useDispatch } from 'react-redux'
+
+import adoptMe from '../../functions/functions'
+
 import styles from './Nav.module.css'
 
-const Nav = ({ getEgg }) => {
+const Nav = () => {
   const toHome = () => {
     dispatch(setLayer(0, ''))
     dispatch(setLayer(1, ''))
@@ -22,7 +24,7 @@ const Nav = ({ getEgg }) => {
         <Link to='/'>
           <button
             className='btn btn-primary'
-            onClick={getEgg}
+            onClick={() => adoptMe.getEgg('', dispatch)}
           >
             Adoptar
           </button>

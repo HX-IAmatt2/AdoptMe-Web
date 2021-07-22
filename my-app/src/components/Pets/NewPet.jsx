@@ -13,12 +13,12 @@ const NewPet = ({ pet, setPet }) => {
   }
 
   // Renderiza el form Rename
-  const rename = () => {
+  const showRename = () => {
     dispatch(setLayer(1, 'Rename'))
   }
 
   return (
-    <NewPetView pet={pet} setPet={setPet} add={add} rename={rename} />
+    <NewPetView pet={pet} setPet={setPet} add={add} showRename={showRename} />
   )
 }
 

@@ -1,18 +1,22 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { setLayer } from '../../actions/actions.js'
 import styles from './EggInfoView.module.css'
 
 const bucks = './img/icons/bucks.png'
 
-const EggInfo = ({ closeEggInfo }) => {
+const EggInfo = () => {
   const layer1 = useSelector((state) => state.layer1)
   const egg = useSelector((state) => state.egg)
+  const dispatch = useDispatch()
 
   if (layer1 === 'EggInfo') {
     return (
 
       <div className={styles.box}>
         <div id={styles.closeDiv}>
-          <button className='btn btn-danger' onClick={closeEggInfo}>
+          <button
+            className='btn btn-danger' onClick={() => dispatch(setLayer(1, ''))}
+          >
             X
           </button>
         </div>

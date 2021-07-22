@@ -39,11 +39,6 @@ const Wiki = () => {
     dispatch(setLayer(1, 'EggInfo'))
   }
 
-  // Cierra EggInfo
-  const closeEggInfo = () => {
-    dispatch(setLayer(1, ''))
-  }
-
   // Renderiza PetInfo en Layer1
   const petInfo = (item) => {
     setPet(item)
@@ -52,7 +47,6 @@ const Wiki = () => {
 
   return (
     <WikiView
-      closeEggInfo={closeEggInfo}
       eggInfo={eggInfo}
       list={list}
       category={category}

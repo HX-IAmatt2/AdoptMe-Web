@@ -7,6 +7,8 @@ const Pets = {
     img: './img/pets/Gato.png',
     age: 'Recién nacido',
     rarity: 'Común',
+    source: 'Huevo Inicial - Huevo Roto - Huevo de Mascota',
+    txt: 'El gato es una de las dos mascotas que los jugadores pueden obtener de un huevo inicial que se puede obtener de forma gratuita. Sin embargo, si un jugador quiere obtenerlo de nuevo, debe comprar un huevo de mascota o un huevo roto.',
     trucos: [
       'Sentarse (Recien Nacido)',
       'Acostarse (Junior)',
@@ -24,6 +26,8 @@ const Pets = {
     img: './img/pets/Perro.png',
     age: 'Recién nacido',
     rarity: 'Común',
+    source: 'Huevo Inicial - Huevo Roto - Huevo de Mascota',
+    txt: 'El perro es una de las dos mascotas que los jugadores pueden obtener de un huevo inicial que se puede obtener de forma gratuita. Sin embargo, si un jugador quiere obtenerlo de nuevo, debe comprar un huevo de mascota o un huevo roto. El perro es la primera mascota que se ha publicado!',
     trucos: [
       'Sentarse (Recien Nacido)',
       'Acostarse (Junior)',
@@ -75,6 +79,8 @@ const Pets = {
     img: './img/pets/Pollo.png',
     age: 'Recién nacido',
     rarity: 'Común',
+    source: 'Huevo de granja',
+    txt: 'El pollo es una de las nueve mascotas que se pueden obtener del huevo de granja, con 20% de probabilidades de ser obtenido. Fue añadido a Adopt Me! con las otras mascotas de la granja el 22 de noviembre de 2019. Ahora es inalcanzable a menos que a través del comercio con otros jugadores o la eclosión de un huevo de granja si todavía tienes uno.',
     trucos: [
       'Sentarse (Recien Nacido)',
       'Acostarse (Junior)',

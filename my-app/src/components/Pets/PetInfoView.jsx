@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux'
-import styles from './EggInfoView.module.css'
+import styles from './PetInfoView.module.css'
 
 const bucks = './img/icons/bucks.png'
 
-const EggInfo = ({ egg, closeEggInfo }) => {
+const PetInfo = ({ pet, closeEggInfo }) => {
   const layer1 = useSelector((state) => state.layer1)
 
-  if (layer1 === 'EggInfo') {
+  if (layer1 === 'Pet Info') {
     return (
 
       <div className={styles.box}>
@@ -17,35 +17,34 @@ const EggInfo = ({ egg, closeEggInfo }) => {
         </div>
 
         <div className={styles.body}>
-          <h3>{egg.name}</h3>
+          <h3>{pet.name}</h3>
 
-          <img className={styles.img} alt='' src={egg.img} />
+          <img className={styles.img} alt='' src={pet.img} />
 
           <div className={styles.description}>
-            <p>{egg.description}</p>
+            <p>{pet.txt}</p>
           </div>
 
           <div className={styles.keys}>
 
             <div>
-              <h4>Costo</h4>
-              <span>  {egg.cost}</span>
-              <span> <img src={bucks} alt='' /></span>
+              <h4>Proviene de:</h4>
+              <span>{pet.source}</span>
             </div>
 
             <div>
               <h4>Rareza</h4>
-              <span className={egg.rarity === 'Raro' ? styles.rarityBlue : null}>⧫</span>
-              <span>  {egg.rarity}</span>
+              <span className={pet.rarity === 'Raro' ? styles.rarityBlue : null}>⧫</span>
+              <span>  {pet.rarity}</span>
             </div>
 
           </div>
 
           <br />
-          <h4>Posibilidad de incubar:</h4>
+          <h4>Trucos:</h4>
           <ul>
-            {egg.content.map((pet, index) => (
-              <li key={index}> {pet}</li>
+            {pet.trucos.map((truco, index) => (
+              <li key={index}> {truco}</li>
             ))}
           </ul>
         </div>
@@ -55,4 +54,4 @@ const EggInfo = ({ egg, closeEggInfo }) => {
   return null
 }
 
-export default EggInfo
+export default PetInfo

@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setLayer, setEgg } from './actions/actions.js'
+
 import Nav from './components/Nav/Nav.jsx'
-import NewEgg from './components/NewEgg/NewEgg'
+import NewEgg from './components/Eggs/NewEgg'
 import Inventario from './components/Inventario/Inventario'
 import Wiki from './components/Wiki/Wiki'
 
-import { setLayer } from './actions/actions.js'
-
 const App = () => {
   const dispatch = useDispatch()
-  const [egg, setEgg] = useState({})
 
   // Da un huevo de bienvenida de regalo por única vez.
   useEffect(() => {
@@ -39,12 +38,11 @@ const App = () => {
       console.log(`numero obtenido: ${random} (huevo ${fetchEgg})`)
     }
     try {
-      const response = await fetch('http://localhost:3001/eggs/' + fetchEgg)
-      setEgg(await response.json())
+      const response = await window.fetch('http://localhost:3001/eggs/' + fetchEgg)
+      dispatch(setEgg(await response.json()))
     } catch (error) {
       console.log('Error en Fetch:', error)
     }
-
     dispatch(setLayer(0, 'New Egg'))
   }
 
@@ -54,7 +52,7 @@ const App = () => {
         <Nav getEgg={getEgg} />
       </Route>
 
-      <NewEgg egg={egg} />
+      <NewEgg />
 
       <Route path='/Wiki'>
         <Wiki />

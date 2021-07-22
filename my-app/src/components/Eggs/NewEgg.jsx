@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import NewEggView from './NewEggView.jsx'
+import { useSelector, useDispatch } from 'react-redux'
 import { setLayer } from '../../actions/actions.js'
 
-import NewPet from '../NewPet/NewPet.jsx'
+import NewEggView from './NewEggView.jsx'
+import NewPet from '../Pets/NewPet.jsx'
 
-const NewEgg = ({ egg, getEgg }) => {
+const NewEgg = () => {
+  const egg = useSelector((state) => state.egg)
   const dispatch = useDispatch()
   const [pet, setPet] = useState({})
 
@@ -68,7 +69,7 @@ const NewEgg = ({ egg, getEgg }) => {
     console.log(`Random obtenido: ${random} (Mascota: ${fetchPet})`)
 
     try {
-      const response = await fetch('http://localhost:3001/pets/' + fetchPet)
+      const response = await window.fetch('http://localhost:3001/pets/' + fetchPet)
       setPet(await response.json())
     } catch (error) {
       console.log('Error en Fetch:', error)
@@ -79,7 +80,7 @@ const NewEgg = ({ egg, getEgg }) => {
 
   return (
     <>
-      <NewEggView egg={egg} newPet={newPet} getEgg={getEgg} />
+      <NewEggView newPet={newPet} />
       <NewPet pet={pet} setPet={setPet} />
     </>
   )

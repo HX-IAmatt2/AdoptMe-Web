@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
@@ -11,10 +11,16 @@ import adoptMe from './functions/functions'
 
 const App = () => {
   const dispatch = useDispatch()
+  const [data, setData] = useState([])
 
-  // Da un huevo de bienvenida de regalo por única vez.
   useEffect(() => {
-    adoptMe.getEgg('initial', dispatch)
+    adoptMe.getEgg('initial', dispatch) // Da un huevo de bienvenida de regalo por única vez.
+
+    const fetchData = async () => {
+      const response = await window.fetch('http://localhost:3001/eggs/all')
+      setData(await response.json())
+    }
+    fetchData()
   }, [dispatch])
 
   return (
@@ -26,7 +32,7 @@ const App = () => {
       <NewEgg />
 
       <Route path='/Wiki'>
-        <Wiki />
+        <Wiki data={data} setData={setData} />
       </Route>
 
       <Route path='/Inventario'>

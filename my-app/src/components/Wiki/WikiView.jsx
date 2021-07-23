@@ -5,7 +5,7 @@ import PetInfo from '../Pets/PetInfoView'
 
 import styles from './WikiView.module.css'
 
-const WikiView = ({ pet, egg, list, eggInfo, category, setCategory, setRarity, petInfo }) => {
+const WikiView = ({ pet, list, eggInfo, category, setCategory, setRarity, petInfo }) => {
   return (
     <div className={styles.box}>
       <div id={styles.closeDiv}>

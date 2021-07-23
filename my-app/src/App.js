@@ -15,7 +15,7 @@ const App = () => {
   // Da un huevo de bienvenida de regalo por única vez.
   useEffect(() => {
     adoptMe.getEgg('initial', dispatch)
-  }, [])
+  }, [dispatch])
 
   return (
     <div className='App'>

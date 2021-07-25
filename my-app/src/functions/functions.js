@@ -1,4 +1,5 @@
 import { setLayer, setEgg } from '../actions/actions.js'
+
 import axios from 'axios'
 import { port, host } from '../config.js'
 
@@ -25,8 +26,8 @@ const adoptMe = {
       console.log(`numero obtenido: ${random} (huevo ${fetchEgg})`)
     }
     try {
-      const response = await window.fetch(`http://${host}:${port}/eggs/` + fetchEgg)
-      dispatch(setEgg(await response.json()))
+      const response = await axios.get(`http://${host}:${port}/eggs/` + fetchEgg)
+      dispatch(setEgg(await response.data))
     } catch (error) {
       console.log('Error en Fetch:', error)
     }
@@ -88,8 +89,8 @@ const adoptMe = {
     console.log(`Random obtenido: ${random} (Mascota: ${fetchPet})`)
 
     try {
-      const response = await window.fetch(`http://${host}:${port}/pets/` + fetchPet)
-      setPet(await response.json())
+      const response = await axios.get(`http://${host}:${port}/pets/` + fetchPet)
+      setPet(await response.data)
     } catch (error) {
       console.log('Error en Fetch:', error)
     }

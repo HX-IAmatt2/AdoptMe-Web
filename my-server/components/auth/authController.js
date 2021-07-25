@@ -1,4 +1,4 @@
-const Users = require('../../store/users_DB')
+let Users = require('../../store/users_DB')
 
 const LoginController = {
 
@@ -15,6 +15,11 @@ const LoginController = {
       name: Users[mail].name,
       gender: Users[mail].gender
     }
+  },
+
+  addUser: (name, gender, mail, password) => {
+    Users = { ...Users, [mail]: { name, gender, password } }
+    console.log(Users)
   }
 }
 

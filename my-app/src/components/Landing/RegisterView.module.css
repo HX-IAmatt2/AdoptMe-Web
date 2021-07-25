@@ -10,7 +10,6 @@
   min-width: 300px;
 
   background-color: rgb(226, 157, 197);
-  opacity: 97%;
   position: absolute;
 
   align-self: center;
@@ -23,21 +22,21 @@
 }
 
 #formBox {
-  border-style: solid;
   padding: 1rem;
 }
 
 .input {
-  border-style: solid;
-
   margin-top: 2rem;
+}
+
+.error {
+  margin-top: 3rem;
+  color: red;
 }
 
 .buttons {
-  border-style: solid;
   display: flex;
   justify-content: space-around;
-  margin:auto;
-  margin-top: 2rem;
+  margin: auto;
+  margin-top: 3rem;
 }
-

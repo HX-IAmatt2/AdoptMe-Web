@@ -40,11 +40,9 @@ const Landing = () => {
     if (mail && pass) {
       setloginError()
       try {
-        const res = await axios.post(`http://${host}:${port}/login/`, { mail, pass })
-        console.log(`LOGIN CORRECTO, bienvenido ${res.data.name}`)
+        const res = await axios.post(`http://${host}:${port}/auth/login`, { mail, pass })
         dispatch(setLogged(res.data.name, res.data.gender))
       } catch (error) {
-        console.log('Error en login:', error.response.data)
         setloginError(error.response.data)
       }
     }

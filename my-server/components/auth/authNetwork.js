@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const LoginController = require('./loginController')
+const LoginController = require('./authController')
 
 require('colors')
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
   const mail = req.body.mail
   const pass = req.body.pass
   console.log('Mail:'.inverse.yellow, LoginController.checkMail(mail))
@@ -18,6 +18,20 @@ router.post('/', (req, res) => {
     }
   } else {
     res.status(400).send('Cuenta inexistente')
+  }
+})
+
+router.post('/register', (req, res) => {
+  const name = req.body.name
+  const gender = req.body.gender
+  const mail = req.body.mail
+  const pass = req.body.pass
+
+  if (LoginController.checkMail(mail)) {
+    res.status(400).send('Ese email ya está registrado')
+  } else {
+    LoginController.addUser(name, gender, mail, pass)
+    res.send('Registro correcto!')
   }
 })
 

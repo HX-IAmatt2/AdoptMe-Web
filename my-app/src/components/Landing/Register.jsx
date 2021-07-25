@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import { badWordsSpa } from '../../data/badWords.js'
-import { setLayer } from '../../actions/actions.js'
 import { useDispatch, useSelector } from 'react-redux'
+import { setLayer } from '../../actions/actions.js'
+
+import axios from 'axios'
+import { port, host } from '../../config.js'
+
+import { badWordsSpa } from '../../data/badWords.js'
 // import RegisterView from './RegisterView.jsx'
 
 import styles from './RegisterView.module.css'
@@ -10,38 +14,53 @@ const Login = () => {
   const layer1 = useSelector((state) => state.layer1)
 
   const dispatch = useDispatch()
-  const [mail, setMail] = useState()
   const [name, setName] = useState()
-  const [pass, setPass] = useState()
+  const [nameError, setNameError] = useState(false)
 
-  const [error, setError] = useState(false)
+  const [gender, setGender] = useState()
+  const [mail, setMail] = useState()
+  const [mailError, setMailError] = useState()
+
+  const [pass, setPass] = useState()
+  const [passError, setPassError] = useState()
+
+  const [registerError, setRegisterError] = useState()
 
   const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-
+  const passformat = /^[A-Za-z]\w/
 
   const handleChange = (input, value) => {
-    setError(false)
     if (input === 'name') {
-      if (badWordsSpa.includes(value.toLowerCase())) { setError('Insultos no permitidos!') }
-      if (value.length < 3) setError('Debe tener al menos 3 caracteres')
-      if (value === '') setError('Ingresa un nuevo nombre')
+      setNameError(false)
+      if (value.length < 3) setNameError('El nombre debe tener al menos 3 caracteres')
+      else if (badWordsSpa.includes(value.toLowerCase())) setNameError('Insultos como nombre no son permitidos!')
+      // if (value === '') setNameError('Ingresa tu nombre o apodo!')
       setName(value)
     }
 
     if (input === 'mail') {
-      if (badWordsSpa.includes(value.toLowerCase())) { setError('Insultos no permitidos!') }
-      if (value.length < 3) setError('Debe tener al menos 3 caracteres')
-      if (value === '') setError('Ingresa un nuevo nombre')
+      setMailError(false)
+      if (!value.match(mailformat)) setMailError('Debes ingresar un email valido')
       setMail(value)
     }
 
-    // setMail(value)
+    if (input === 'pass') {
+      setPassError(false)
+      if (value.length < 6 || value.length > 8) setPassError('El password debe tener de 6 a 8 caracteres')
+      else if (!value.match(passformat)) setPassError('El password debe contener letras')
+      setPass(value)
+    }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!error) {
-      dispatch(setLayer(1, ''))
+    if (!nameError && !mailError && !passError) {
+      try {
+        await axios.post(`http://${host}:${port}/auth/register`, { name, gender, mail, pass })
+        dispatch(setLayer(1, ''))
+      } catch (error) {
+        setRegisterError(error.response.data)
+      }
     }
   }
 
@@ -71,6 +90,20 @@ const Login = () => {
           </div>
 
           <div className={styles.input}>
+            <label>Genero:</label><br />
+            <select
+              className='form-select form-select-sm'
+              aria-label='.form-select-sm example'
+              onChange={(event) => setGender(event.target.value)}
+            >
+
+              <option value='-'>---</option>
+              <option value='F'>Femenino</option>
+              <option value='M'>Masculino</option>
+            </select>
+          </div>
+
+          <div className={styles.input}>
             <label>Dirección de email:</label><br />
             <input
               className='form-control mr-sm-2'
@@ -80,19 +113,6 @@ const Login = () => {
               value={mail}
               onChange={(event) => handleChange(event.target.name, event.target.value)}
             />
-          </div>
-
-          <div className={styles.input}>
-            <label>Genero:</label><br />
-            <select
-              className='form-select form-select-sm'
-              aria-label='.form-select-sm example'
-              onChange={(event) => handleChange(event.target.name, event.target.value)}
-            >
-              <option value='F'>Femenino</option>
-              <option value='M'>Masculino</option>
-              <option value='X'>X</option>
-            </select>
           </div>
 
           <div className={styles.input}>
@@ -110,7 +130,7 @@ const Login = () => {
           <div className={styles.buttons}>
             <button
               className={
-                error
+                nameError || mailError || passError
                   ? 'disabled btn btn-success my-2 my-sm-0'
                   : 'btn btn-success my-2 my-sm-0'
               }
@@ -119,18 +139,21 @@ const Login = () => {
               Registrarme
             </button>
             <button
-              className={
-                error
-                  ? 'disabled btn btn-success my-2 my-sm-0'
-                  : 'btn btn-danger my-2 my-sm-0'
-              }
-              type='submit'
+              className='btn btn-danger my-2 my-sm-0'
+              onClick={() => dispatch(setLayer(1, ''))}
             >
               Cancelar
             </button>
           </div>
 
-          {error ? <h5>{error}</h5> : null}
+          <div className={styles.error}>
+            {nameError ? <h5>{nameError}</h5> : null}
+            {mailError ? <h5>{mailError}</h5> : null}
+            {passError ? <h5>{passError}</h5> : null}
+            {registerError ? <h5>{registerError}</h5> : null}
+
+          </div>
+
         </form>
       </div>
     )

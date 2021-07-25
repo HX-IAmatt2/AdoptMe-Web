@@ -1,13 +1,13 @@
 const Users = {
   'nacho@dominio.com': {
     name: 'Nacho',
-    password: 'cualquiera',
-    gender: 'M'
+    gender: 'M',
+    password: 'cualquiera'
   },
   'sabri_ferrando@hotmail.com': {
     name: 'Sabri',
-    password: '12345',
-    gender: 'F'
+    gender: 'F',
+    password: '12345'
   }
 }
 

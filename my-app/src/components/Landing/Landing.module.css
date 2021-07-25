@@ -1,0 +1,48 @@
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.8);
+}
+
+.box {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    margin-top: 8rem;
+
+    max-width: 700px;
+    min-width: 400px;
+    min-height: 200px;
+
+    background-color: rgb(228, 228, 228);
+    border-radius: 20px;
+    border-color: rgb(170, 8, 89);
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 10px 10px 50px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 4rem;
+  width: 300px;
+}
+
+.error {
+  color: red;
+  position: relative;
+}
+
+#formLogin {
+  padding: 2rem;
+}

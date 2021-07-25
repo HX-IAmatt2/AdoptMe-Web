@@ -1,4 +1,7 @@
 const initialState = {
+  user: {
+    logged: false
+  },
   layer0: '',
   layer1: '',
   inventario: [],
@@ -11,6 +14,9 @@ const windowReducer = (state = initialState, action) => {
       if (action.payload.layer === 0) return { ...state, layer0: action.payload.content }
       if (action.payload.layer === 1) return { ...state, layer1: action.payload.content }
       break
+
+    case 'SET_LOGGED':
+      return { ...state, user: { logged: true, name: action.payload.name, gender: action.payload.gender } }
 
     case 'ADD_PET':
       return { ...state, inventario: state.inventario.concat(action.payload) }

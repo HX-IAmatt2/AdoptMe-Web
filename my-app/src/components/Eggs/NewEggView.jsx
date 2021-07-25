@@ -6,6 +6,8 @@ import styles from './NewEggView.module.css'
 const NewEggView = ({ setPet, eggInfo }) => {
   const layer0 = useSelector((state) => state.layer0)
   const egg = useSelector((state) => state.egg)
+  const user = useSelector((state) => state.user)
+
   const dispatch = useDispatch()
 
   return layer0 === 'New Egg'
@@ -13,7 +15,7 @@ const NewEggView = ({ setPet, eggInfo }) => {
       <div className={styles.box}>
         {egg.type === 'initial'
           ? (
-            <div id={styles.titulo}>Bienvenido!</div>
+            <div id={styles.titulo}> {user.gender === 'F' ? 'Bienvenida' : 'Bienvenido'} {user.name}!</div>
             )
           : (
             <div id={styles.titulo}>Abre tu huevo!</div>

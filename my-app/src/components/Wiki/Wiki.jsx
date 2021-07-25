@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom'
 import EggInfo from '../Eggs/EggInfoView'
 import PetInfo from '../Pets/PetInfoView'
 
+import { port, host } from '../../config.js'
+
 import styles from './WikiView.module.css'
 
 const Wiki = ({ data, setData }) => {
@@ -43,10 +45,10 @@ const Wiki = ({ data, setData }) => {
 
     try {
       if (rarity === 'all') {
-        response = await window.fetch(`http://localhost:3001/${category}/all`)
+        response = await window.fetch(`http://${host}:${port}/${category}/all`)
       } else {
         response = await window.fetch(
-          `http://localhost:3001/${category}/all?rarity=${rarity}`
+          `http://${host}:${port}/${category}/all?rarity=${rarity}`
         )
       }
     } catch (err) {

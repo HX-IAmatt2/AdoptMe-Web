@@ -1,4 +1,3 @@
-// const bucks='<img src="./img/icons/bucks.png"/>'
 const Eggs = {
   initial: {
     type: 'initial',

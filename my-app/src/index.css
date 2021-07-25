@@ -1,7 +1,6 @@
-
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
 }
 
 html {
@@ -9,17 +8,14 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0px;
+  height: 100%;
   font-family: 'Comic Neue', cursive;
-  background-image: url('./img/bg.jpg') ;
+  background-image: url('./img/bg.jpg');
   text-align: center;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 ul {
   list-style: none;
 }
+

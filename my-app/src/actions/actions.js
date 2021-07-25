@@ -10,6 +10,17 @@ export const setLayer = (layer, content) => {
   }
 }
 
+export const setLogged = (name, gender) => {
+  return {
+    type: 'SET_LOGGED',
+    payload: {
+      name,
+      gender
+    }
+
+  }
+}
+
 export const addPet = (pet) => {
   return {
     type: 'ADD_PET',

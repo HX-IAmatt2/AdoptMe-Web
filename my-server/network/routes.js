@@ -10,7 +10,7 @@ const routes = (server) => {
   server.use('/', (req, res) => {
     res
       .status(400)
-      .send('la ruta no existe')
+      .send('Hola Henry, soy el backend de AdoptMe! Web')
   })
 }
 

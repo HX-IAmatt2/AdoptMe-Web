@@ -7,11 +7,12 @@ require('colors')
 router.post('/login', (req, res) => {
   const mail = req.body.mail
   const pass = req.body.pass
-  console.log('Mail:'.inverse.yellow, LoginController.checkMail(mail))
+  // console.log('Mail:'.inverse.yellow, LoginController.checkMail(mail))
 
   if (LoginController.checkMail(mail)) {
-    console.log('Password:'.inverse.red, LoginController.checkPass(mail, pass))
+    // console.log('Password:'.inverse.red, LoginController.checkPass(mail, pass))
     if (LoginController.checkPass(mail, pass)) {
+      console.log('USUARIO LOGUEADO:'.inverse.magenta, mail)
       res.send(LoginController.getUserInfo(mail))
     } else {
       res.status(401).send('Password incorrecto')
@@ -31,6 +32,7 @@ router.post('/register', (req, res) => {
     res.status(400).send('Ese email ya está registrado')
   } else {
     LoginController.addUser(name, gender, mail, pass)
+    console.log('NUEVO USUARIO:'.inverse.yellow, mail, '(' + name + ')')
     res.status(201).send('Registro correcto!')
   }
 })

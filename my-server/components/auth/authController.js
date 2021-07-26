@@ -19,7 +19,6 @@ const LoginController = {
 
   addUser: (name, gender, mail, password) => {
     Users = { ...Users, [mail]: { name, gender, password } }
-    console.log(Users)
   }
 }
 

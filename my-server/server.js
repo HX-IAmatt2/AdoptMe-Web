@@ -8,7 +8,7 @@ require('colors')
 
 const server = express()
 
-server.use(morgan('dev'))
+// server.use(morgan('dev'))
 server.use(cors())
 server.use(express.json())
 

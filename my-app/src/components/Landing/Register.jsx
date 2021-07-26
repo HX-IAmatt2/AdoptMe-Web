@@ -14,17 +14,16 @@ const Login = () => {
   const layer1 = useSelector((state) => state.layer1)
 
   const dispatch = useDispatch()
-  const [name, setName] = useState()
+
+  const [name, setName] = useState('')
+  const [gender, setGender] = useState('')
+  const [mail, setMail] = useState('')
+  const [pass, setPass] = useState('')
+
   const [nameError, setNameError] = useState(false)
-
-  const [gender, setGender] = useState()
-  const [mail, setMail] = useState()
-  const [mailError, setMailError] = useState()
-
-  const [pass, setPass] = useState()
-  const [passError, setPassError] = useState()
-
-  const [registerError, setRegisterError] = useState()
+  const [mailError, setMailError] = useState(false)
+  const [passError, setPassError] = useState(false)
+  const [registerError, setRegisterError] = useState(false)
 
   const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   const passformat = /^[A-Za-z]\w/

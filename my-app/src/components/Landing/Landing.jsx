@@ -12,17 +12,17 @@ const Landing = () => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
-  const [mail, setMail] = useState()
-  const [pass, setPass] = useState()
+  const [mail, setMail] = useState('')
+  const [pass, setPass] = useState('')
 
-  const [mailError, setMailError] = useState()
-  const [passError, setPassError] = useState()
-  const [loginError, setloginError] = useState()
+  const [mailError, setMailError] = useState(false)
+  const [passError, setPassError] = useState(false)
+  const [loginError, setloginError] = useState(false)
 
   const mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
   const handleChange = (input, value) => {
-    setloginError()
+    setloginError(false)
     if (input === 'mail') {
       setMailError(false)
       if (!value.match(mailformat)) setMailError('Debes ingresar un email valido')
@@ -35,13 +35,13 @@ const Landing = () => {
     }
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
+  const handleSubmit = async () => {
     if (mail && pass) {
-      setloginError()
+      setloginError(false)
       try {
         const res = await axios.post(`http://${host}:${port}/auth/login`, { mail, pass })
         dispatch(setLogged(res.data.name, res.data.gender))
+        console.log('Bienvenido', res.data.name)
       } catch (error) {
         setloginError(error.response.data)
       }
@@ -62,7 +62,6 @@ const Landing = () => {
             <form
               id={styles.formLogin}
               className='form-inline'
-              onSubmit={handleSubmit}
             >
               <div className={styles.input}>
                 <label>Dirección de e-mail:</label><br />
@@ -93,27 +92,26 @@ const Landing = () => {
               {passError ? <h5 className={styles.error}>{passError}</h5> : null}
               {loginError ? <h5 className={styles.error}>{loginError}</h5> : null}
 
-              <div className={styles.controls}>
-                <button
-                  className={
+            </form>
+            <div className={styles.controls}>
+              <button
+                className={
                     !mail || !pass
                       ? 'disabled btn btn-success my-2 my-sm-0'
                       : 'btn btn-success my-2 my-sm-0'
             }
-                  type='submit'
-                >
-                  Ingresar
-                </button>
+                onClick={() => handleSubmit()}
+              >
+                Ingresar
+              </button>
 
-                <button
-                  className='btn btn-info'
-                  onClick={() => dispatch(setLayer(1, 'Register'))}
-                >
-                  Crear una cuenta
-                </button>
-              </div>
-
-            </form>
+              <button
+                className='btn btn-info'
+                onClick={() => dispatch(setLayer(1, 'Register'))}
+              >
+                Crear una cuenta
+              </button>
+            </div>
           </div>
 
           <div />

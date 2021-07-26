@@ -31,7 +31,7 @@ router.post('/register', (req, res) => {
     res.status(400).send('Ese email ya está registrado')
   } else {
     LoginController.addUser(name, gender, mail, pass)
-    res.send('Registro correcto!')
+    res.status(201).send('Registro correcto!')
   }
 })
 

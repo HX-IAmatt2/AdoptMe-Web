@@ -13,12 +13,13 @@ const LoginController = {
   getUserInfo: (mail) => {
     return {
       name: Users[mail].name,
-      gender: Users[mail].gender
+      gender: Users[mail].gender,
+      new: Users[mail].new
     }
   },
 
   addUser: (name, gender, mail, password) => {
-    Users = { ...Users, [mail]: { name, gender, password } }
+    Users = { ...Users, [mail]: { name, gender, password, new: true } }
   }
 }
 

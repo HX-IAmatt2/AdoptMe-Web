@@ -16,7 +16,7 @@ const windowReducer = (state = initialState, action) => {
       break
 
     case 'SET_LOGGED':
-      return { ...state, user: { logged: true, name: action.payload.name, gender: action.payload.gender } }
+      return { ...state, user: { logged: true, name: action.payload.name, gender: action.payload.gender, new: action.payload.newCondition } }
 
     case 'ADD_PET':
       return { ...state, inventario: state.inventario.concat(action.payload) }

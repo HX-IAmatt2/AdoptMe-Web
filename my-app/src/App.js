@@ -19,9 +19,10 @@ const App = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState([])
 
-  useEffect(() => {
-    adoptMe.getEgg('initial', dispatch) // Da un huevo de bienvenida de regalo por única vez.
+  if (user.new) adoptMe.getEgg('initial', dispatch) // Da un huevo de bienvenida de regalo por única vez.
 
+  // obtiene la lista default que muestra el componente Wiki
+  useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(`http://${host}:${port}/eggs/all`)
       setData(response.data)
@@ -40,12 +41,12 @@ const App = () => {
           <NewEgg />
 
           <Route path='/Wiki'>
-          <Wiki data={data} setData={setData} />
-        </Route>
+            <Wiki data={data} setData={setData} />
+          </Route>
 
           <Route path='/Inventario'>
-          <Inventario />
-        </Route>
+            <Inventario />
+          </Route>
         </div>
       </div>
     )

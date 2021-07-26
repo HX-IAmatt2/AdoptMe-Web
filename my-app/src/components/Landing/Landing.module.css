@@ -31,6 +31,11 @@
     box-shadow: 10px 10px 50px;
 }
 
+.input {
+  border-style: none;
+  margin-top: 2rem;
+}
+
 .controls {
   display: flex;
   justify-content: space-between;

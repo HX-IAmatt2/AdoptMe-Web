@@ -6,7 +6,6 @@ import { port, host } from '../../config.js'
 import { useSelector, useDispatch } from 'react-redux'
 import { setLogged, setLayer } from '../../actions/actions.js'
 
-import Register from './Register'
 import styles from './Landing.module.css'
 
 const Landing = () => {
@@ -65,26 +64,31 @@ const Landing = () => {
               className='form-inline'
               onSubmit={handleSubmit}
             >
-              <h4>Dirección de e-mail:</h4>
-              <input
-                className='form-control mr-sm-2'
-                type='text'
-                name='mail'
-                key='mail'
-                value={mail}
-                onChange={(event) => handleChange('mail', event.target.value)}
-              />
+              <div className={styles.input}>
+                <label>Dirección de e-mail:</label><br />
+                <input
+                  className='form-control mr-sm-2'
+                  type='text'
+                  name='mail'
+                  key='mail'
+                  value={mail}
+                  onChange={(event) => handleChange('mail', event.target.value)}
+                />
+              </div>
 
-              <h4>Contraseña:</h4>
+              <div className={styles.input}>
 
-              <input
-                className='form-control mr-sm-2'
-                type='password'
-                name='pass'
-                key='pass'
-                value={pass}
-                onChange={(event) => handleChange('pass', event.target.value)}
-              />
+                <label>Contraseña:</label><br />
+                <input
+                  className='form-control mr-sm-2'
+                  type='password'
+                  name='pass'
+                  key='pass'
+                  value={pass}
+                  onChange={(event) => handleChange('pass', event.target.value)}
+                />
+              </div>
+
               {mailError ? <h5 className={styles.error}>{mailError}</h5> : null}
               {passError ? <h5 className={styles.error}>{passError}</h5> : null}
               {loginError ? <h5 className={styles.error}>{loginError}</h5> : null}
@@ -102,7 +106,8 @@ const Landing = () => {
                 </button>
 
                 <button
-                  className='btn btn-info' onClick={() => dispatch(setLayer(1, 'Register'))}
+                  className='btn btn-info'
+                  onClick={() => dispatch(setLayer(1, 'Register'))}
                 >
                   Crear una cuenta
                 </button>

@@ -14,10 +14,10 @@ router.post('/login', (req, res) => {
     if (LoginController.checkPass(mail, pass)) {
       res.send(LoginController.getUserInfo(mail))
     } else {
-      res.status(400).send('Password incorrecto')
+      res.status(401).send('Password incorrecto')
     }
   } else {
-    res.status(400).send('Cuenta inexistente')
+    res.status(401).send('Cuenta inexistente')
   }
 })
 

@@ -13,7 +13,6 @@ const EggInfo = () => {
     return (
 
       <>
-
         <div className={styles.box}>
 
           <div className={styles.header}>
@@ -40,8 +39,10 @@ const EggInfo = () => {
 
               <div>
                 <h4>Rareza</h4>
-                <span className={egg.rarity === 'Raro' ? styles.rarityBlue : null}>⧫</span>
-                <span>  {egg.rarity}</span>
+                {egg.rarity === 'Legendario' ? <span className={styles.legendario}>⧫ </span> : null}
+                {egg.rarity === 'Común' ? <span className={styles.comun}>⧫ </span> : null}
+                {egg.rarity === 'Raro' ? <span className={styles.raro}>⧫ </span> : null}
+                <span>{egg.rarity}</span>
               </div>
 
             </div>

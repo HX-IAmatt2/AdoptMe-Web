@@ -1,11 +1,14 @@
+
+
 .box {
   font-family: 'M PLUS Rounded 1c', sans-serif;
-
+  
   display: flex;
   flex-direction: column;
   position: absolute;
 
-  margin-top: 3vh;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 
   min-width: 90vw;
   max-width: 95vw;
@@ -22,7 +25,6 @@
   border-style: none;
   display: flex;
   justify-content: flex-end;
-  position: relative;
   padding-top: 1rem;
   padding-right: 1rem;
 }
@@ -59,8 +61,20 @@
   margin: auto;
 }
 
-.rarityBlue {
+.raro {
   color: blue;
+  font-size: 19px
+
+}
+
+.legendario {
+  color: black;
+  font-size: 19px
+}
+
+.comun {
+  color: grey;
+  font-size: 19px
 }
 
 .img {

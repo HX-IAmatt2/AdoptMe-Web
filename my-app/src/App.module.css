@@ -1,7 +1,6 @@
 .main {
-    border-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-  }
-  
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}

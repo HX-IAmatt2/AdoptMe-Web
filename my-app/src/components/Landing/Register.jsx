@@ -67,9 +67,9 @@ const Login = () => {
   if (layer1 === 'Register') {
     return (
 
-      <div id={styles.box}>
+      <div className={styles.box}>
         <div>
-          <h4>Completa los campos para registrarte</h4>
+          <h3>Completa los campos para registrarte</h3>
         </div>
 
         <form

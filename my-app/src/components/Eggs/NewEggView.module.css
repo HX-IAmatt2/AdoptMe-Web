@@ -1,10 +1,17 @@
 .box {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 15px;
-    max-width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    margin-top: 5vh;
+
+    min-width: 90vw;
+    max-width: 95vw;
+
     height: 250px;
-    margin: auto;
-    margin-top: 5rem;
+
     background-color: rgb(226, 157, 197);
     border-radius: 20px;
     border-color: rgb(170, 8, 89);

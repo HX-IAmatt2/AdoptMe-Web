@@ -113,8 +113,6 @@ const Landing = () => {
 
           <div />
 
-          <Register />
-
         </div>
       </div>
     )

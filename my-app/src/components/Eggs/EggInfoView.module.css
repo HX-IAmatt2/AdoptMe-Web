@@ -3,16 +3,14 @@
 
   display: flex;
   flex-direction: column;
-
-  margin: auto;
-  margin-top: 100px;
-  min-width: 300px;
-  max-width: 80%;
-
-  background-color: rgb(228, 228, 228);
-  opacity: 97%;
   position: absolute;
 
+  margin-top: 3vh;
+
+  min-width: 90vw;
+  max-width: 95vw;
+
+  background-color: rgb(228, 228, 228);
   border-radius: 20px;
   border-color: rgb(170, 8, 89);
   border-style: solid;
@@ -20,23 +18,41 @@
   box-shadow: 10px 10px 50px;
 }
 
-#closeDiv {
-  position: absolute;
-  align-self: flex-end;
-  margin: 8px 8px;
+.header {
+  border-style: none;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  padding-top: 1rem;
+  padding-right: 1rem;
 }
 
 .body {
-  padding: 2rem;
+  margin-top: 0;
+  border-style: none;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .description {
+  border-style: none;
   text-align: justify;
   margin-bottom: 2rem;
 }
 
 .keys {
+  border-style: none;
   display: flex;
+  justify-content: space-between;
+  width: 70%;
+  max-width: 400px;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.incubar {
+  border-style: none;
   justify-content: space-between;
   width: 50%;
   max-width: 250px;
@@ -44,7 +60,7 @@
 }
 
 .rarityBlue {
-  color : blue;
+  color: blue;
 }
 
 .img {

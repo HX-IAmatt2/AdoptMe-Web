@@ -12,6 +12,8 @@ import adoptMe from './functions/functions'
 import axios from 'axios'
 import { port, host } from './config.js'
 
+import styles from './App.module.css'
+
 const App = () => {
   const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
@@ -34,15 +36,17 @@ const App = () => {
           <Nav />
         </Route>
 
-        <NewEgg />
+        <div className={styles.main}>
+          <NewEgg />
 
-        <Route path='/Wiki'>
+          <Route path='/Wiki'>
           <Wiki data={data} setData={setData} />
         </Route>
 
-        <Route path='/Inventario'>
+          <Route path='/Inventario'>
           <Inventario />
         </Route>
+        </div>
       </div>
     )
   } else {

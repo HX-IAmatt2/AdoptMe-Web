@@ -12,49 +12,57 @@ const EggInfo = () => {
   if (layer1 === 'EggInfo') {
     return (
 
-      <div className={styles.box}>
-        <div id={styles.closeDiv}>
-          <button
-            className='btn btn-danger' onClick={() => dispatch(setLayer(1, ''))}
-          >
-            X
-          </button>
-        </div>
+      <>
 
-        <div className={styles.body}>
-          <h3>{egg.name}</h3>
+        <div className={styles.box}>
 
-          <img className={styles.img} alt='' src={egg.img} />
-
-          <div className={styles.description}>
-            <p>{egg.description}</p>
+          <div className={styles.header}>
+            <button
+              className='btn btn-danger' onClick={() => dispatch(setLayer(1, ''))}
+            >
+              X
+            </button>
           </div>
 
-          <div className={styles.keys}>
+          <div className={styles.body}>
 
-            <div>
-              <h4>Costo</h4>
-              <span>  {egg.cost}</span>
-              <span> <img src={bucks} alt='' /></span>
+            <h3>{egg.name}</h3>
+
+            <img className={styles.img} alt='' src={egg.img} />
+
+            <div className={styles.keys}>
+
+              <div>
+                <h4>Costo</h4>
+                <span>  {egg.cost}</span>
+                <span> <img src={bucks} alt='' /></span>
+              </div>
+
+              <div>
+                <h4>Rareza</h4>
+                <span className={egg.rarity === 'Raro' ? styles.rarityBlue : null}>⧫</span>
+                <span>  {egg.rarity}</span>
+              </div>
+
             </div>
 
-            <div>
-              <h4>Rareza</h4>
-              <span className={egg.rarity === 'Raro' ? styles.rarityBlue : null}>⧫</span>
-              <span>  {egg.rarity}</span>
+            <div className={styles.description}>
+              <p>{egg.description}</p>
             </div>
 
+            <div className={styles.incubar}>
+
+              <h4>Posibilidad de incubar:</h4>
+              <ul>
+                {egg.content.map((pet, index) => (
+                  <li key={index}> {pet}</li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          <br />
-          <h4>Posibilidad de incubar:</h4>
-          <ul>
-            {egg.content.map((pet, index) => (
-              <li key={index}> {pet}</li>
-            ))}
-          </ul>
         </div>
-      </div>
+      </>
     )
   }
   return null

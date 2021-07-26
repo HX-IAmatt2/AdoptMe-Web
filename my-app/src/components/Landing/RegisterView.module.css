@@ -1,19 +1,23 @@
-#box {
+
+
+
+.box {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 
   display: flex;
   flex-direction: column;
-  padding: 2rem;
 
-  margin: auto;
-  margin-top: 2rem;
-  min-width: 300px;
+  position: relative;
+
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  max-width: 500px;
 
   background-color: rgb(226, 157, 197);
-  position: absolute;
-
-  align-self: center;
-
   border-radius: 20px;
   border-color: rgb(170, 8, 89);
   border-style: solid;
@@ -22,19 +26,23 @@
 }
 
 #formBox {
+  border-style: none;
   padding: 1rem;
 }
 
 .input {
+  border-style: none;
   margin-top: 2rem;
 }
 
 .error {
+  border-style: none;
   margin-top: 3rem;
   color: red;
 }
 
 .buttons {
+  border-style: none;
   display: flex;
   justify-content: space-around;
   margin: auto;

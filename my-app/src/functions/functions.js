@@ -1,4 +1,4 @@
-import { setLayer, setEgg } from '../actions/actions.js'
+import { setLayer, setEgg, setNewFalse } from '../actions/actions.js'
 
 import axios from 'axios'
 import { port, host } from '../config.js'
@@ -94,7 +94,7 @@ const adoptMe = {
     } catch (error) {
       console.log('Error en Fetch:', error)
     }
-
+    dispatch(setNewFalse())
     dispatch(setLayer(0, 'New Pet'))
   }
 }

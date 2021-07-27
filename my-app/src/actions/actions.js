@@ -18,6 +18,12 @@ export const setLogged = (name, gender, newCondition) => {
       gender,
       newCondition
     }
+  }
+}
+
+export const setNewFalse = () => {
+  return {
+    type: 'SET_NEW_FALSE'
 
   }
 }

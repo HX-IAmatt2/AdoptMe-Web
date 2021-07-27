@@ -21,7 +21,6 @@ const Wiki = ({ data, setData }) => {
   const [position, setPosition] = useState(0)
 
   const [list, setList] = useState([])
-  // const [data, setData] = useState([])
 
   useEffect(() => {
     setList(data.slice(position, position + 5))
@@ -55,7 +54,6 @@ const Wiki = ({ data, setData }) => {
       console.log(err)
     }
     setData(await response.json())
-    // await setList(data.slice(position, position + 5))
   }
 
   const next = () => {

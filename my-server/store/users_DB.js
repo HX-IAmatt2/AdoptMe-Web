@@ -11,6 +11,13 @@ const Users = {
     gender: 'F',
     password: '1',
     new: false
+  },
+
+  'azulamatt09@gmail.com': {
+    name: 'Azu',
+    gender: 'F',
+    password: '1234',
+    new: true
   }
 }
 

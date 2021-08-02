@@ -12,6 +12,9 @@ body {
   height: 100%;
   font-family: 'Comic Neue', cursive;
   background-image: url('./img/bg.jpg');
+  background-position: 'center';
+  background-size: cover;
+  background-repeat: 'no-repeat';
   text-align: center;
 }
 

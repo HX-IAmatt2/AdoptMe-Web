@@ -41,7 +41,7 @@ const App = () => {
           <NewEgg />
 
           <Route path='/Wiki'>
-            <Wiki data={data} setData={setData} />
+            <Wiki data={data[0].name} setData={setData} />
           </Route>
 
           <Route path='/Inventario'>

@@ -55,7 +55,7 @@ const Landing = () => {
 
         <div className={styles.box}>
 
-          <div id={styles.header}>
+          <div>
             <h3>Bienvenido a</h3>
             <img src='./img/title.png' alt='' width='300' />
             <h4>Ingresa a tu cuenta para poder jugar</h4>

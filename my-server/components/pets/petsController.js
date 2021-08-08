@@ -19,7 +19,6 @@ const PetsController = {
     }
     return result
   }
-
 }
 
 module.exports = PetsController

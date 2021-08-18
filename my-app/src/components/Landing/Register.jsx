@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLayer } from '../../actions/actions.js'
-
 import axios from 'axios'
 import { port, host } from '../../config.js'
-
 import { badWordsSpa } from '../../data/badWords.js'
 // import RegisterView from './RegisterView.jsx'
-
 import styles from './RegisterView.module.css'
 
 const Login = () => {

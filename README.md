@@ -8,7 +8,7 @@
 
 > Realizado utilizando el stack de tecnologías HTML, CSS, Javascript, React, Redux, Node.JS, Express, Sequelize y PostgreSQL.
 
-## Login
+## El juego
 
 - Al ingresar podemos crear una cuenta o iniciar sesión en caso de que ya contemos con una.
 

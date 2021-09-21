@@ -19,7 +19,7 @@
 - Si estamos ingresando por primera vez (usuario nuevo) obtenemos por única vez un huevo especial de regalo de bienvenida.
 
 <p align="center">
-  <img width="600" src="./assets/bienvenida.png" />
+  <img width="700" src="./assets/welcome.png" />
 </p>
 
 - Al abrirlo obtenemos aleatoreamente una mascota. En esta oportunidad, obtuvimos un gato!

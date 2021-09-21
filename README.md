@@ -62,9 +62,8 @@
 </p>
 
 
-Podemos coleccionar mascotas en nuestro inventario y tratar de obtener las más "difíciles".
-
-Además posee una sección "Wiki" donde podemos ver todas las mascotas existentes, filtrarlas por tipo, etc. 
+- Podemos coleccionar mascotas en nuestro inventario y tratar de obtener las más "difíciles".
+- Además posee una sección "Wiki" donde podemos ver todas las mascotas existentes, filtrarlas por tipo, etc. 
 
 <p align="center">
   <img width="500" src="./assets/wiki.png" />
